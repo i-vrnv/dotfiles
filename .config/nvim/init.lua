@@ -1,1 +1,1 @@
-require("ignat")
+require("main")
