@@ -19,8 +19,12 @@ vnoremap(">", ">gv", default_opts)
 vnoremap("p", '"_dP', default_opts)
 
 -- Switch buffer
-nnoremap("[b", ":BufferLineCyclePrev<CR>", default_opts)
-nnoremap("]b", ":BufferLineCycleNext<CR>", default_opts)
+nnoremap("]b", ":bn<CR>", default_opts)
+nnoremap("[b", ":bp<CR>", default_opts)
+
+-- Bufferline
+nnoremap("<Tab>", ":BufferLineCycleNext<CR>", default_opts)
+nnoremap("<S-Tab>", ":BufferLineCyclePrev<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
 nnoremap("<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)

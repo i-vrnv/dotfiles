@@ -2,11 +2,6 @@ local M = {}
 
 local lspconfig = require("lspconfig")
 
-local servers = {
-    gopls = {},
-    jdtls = {},
-} 
-
 function M.on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
@@ -20,25 +15,26 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- TODO Here we need to check if cmp is not loaded
 M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
 
 function M.setup()
-    lspconfig.gopls.setup{
-        cmd = {'gopls'},
-        -- for postfix snippets and analyzers
-        capabilities = M.capabilities,
-        settings = {
-            gopls = {
-                experimentalPostfixCompletions = true,
-                analyses = {
-                    unusedparams = true,
-                    shadow = true,
-                },
-                staticcheck = true,
-            },
+  lspconfig.gopls.setup{
+    cmd = {'gopls'},
+    -- for postfix snippets and analyzers
+    capabilities = M.capabilities,
+    settings = {
+      gopls = {
+        experimentalPostfixCompletions = true,
+        analyses = {
+          unusedparams = true,
+          shadow = true,
         },
-        on_attach = M.on_attach,
-    }
+        staticcheck = true,
+      },
+    },
+    on_attach = M.on_attach,
+  }
 end
 
 return M

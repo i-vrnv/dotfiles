@@ -19,3 +19,4 @@ vim.opt.backup = false
 
 vim.opt.updatetime = 50
 
+vim.opt.clipboard = "unnamedplus"
