@@ -3,14 +3,14 @@ local M = {}
 local remap = require("main.keymap")
 local nnoremap = remap.nnoremap
 
-M.setup = function()
+M.setup = function(_, bufnr)
     local opts = { noremap=true, silent=true }
 
     nnoremap('<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     nnoremap('<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     nnoremap('<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     nnoremap('<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    nnoremap('<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    nnoremap('<leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
     nnoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     nnoremap('<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     nnoremap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)

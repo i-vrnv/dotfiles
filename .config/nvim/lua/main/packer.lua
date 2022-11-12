@@ -6,14 +6,15 @@ return require('packer').startup(function(use)
   -- themes
   use('folke/tokyonight.nvim')
 
+  -- nvim-lua/plenary.nvim
+  use('nvim-lua/plenary.nvim')
+
   -- https://github.com/nvim-lualine/lualine.nvim
   use({
     "nvim-lualine/lualine.nvim",
     event = "VimEnter",
     after = "nvim-treesitter",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
-
-
     config = function()
       require("main.lualine").setup()
     end,
@@ -29,8 +30,6 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- nvim-lua/plenary.nvim
-  use('nvim-lua/plenary.nvim')
 
   -- https://github.com/TimUntersberger/neogit
   use {
@@ -63,7 +62,7 @@ return require('packer').startup(function(use)
   use{
     'nvim-telescope/telescope.nvim',
     config = function()
-      require("main.gitsigns").setup()
+      require("main.telescope").setup()
     end,
 }
 
@@ -84,35 +83,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Golang
-  -- https://github.com/fatih/vim-go
-  -- use {'fatih/vim-go', run = ':GoUpdateBinaries'}
-
-  -- Java
-  -- https://github.com/mfussenegger/nvim-jdtls
-  use {
-    'mfussenegger/nvim-jdtls',
-    ft = 'java'
-  } 
-
-
-  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  -- MIGRATE TO MASON 
-  -- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/lsp/mason.lualine
-  -- https://github.com/williamboman/nvim-lsp-installer/discussions/876
-  use("williamboman/nvim-lsp-installer")
-
-  use {
-    "neovim/nvim-lspconfig", 
-    config = function()
-      require("main.lsp").setup()
-    end,
-  } 
-
-  -- set in a good hierarcy 
-  use("L3MON4D3/LuaSnip")
-  use("saadparwaiz1/cmp_luasnip")
-
+  -- CMP
   use {
     "danymat/neogen",
     config = function()
@@ -134,11 +105,39 @@ return require('packer').startup(function(use)
   use("hrsh7th/cmp-path")
   use("hrsh7th/cmp-cmdline")
 
-
+  -- LSP
+  use({
+    "neovim/nvim-lspconfig",
+    -- event = "BufReadPre",
+    requires = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      {
+        "L3MON4D3/LuaSnip",
+        -- config = function()
+        --   require("config.luasnip")
+        -- end,
+      },
+    },
+    config = function()
+      require("main.lsp")
+    end,
+  })
 
   -- DAP
   -- https://github.com/mfussenegger/nvim-dap
   use('mfussenegger/nvim-dap')
   -- https://github.com/rcarriga/nvim-dap-ui
   use("rcarriga/nvim-dap-ui") 
+
+  -- Golang
+  -- https://github.com/fatih/vim-go
+  -- use {'fatih/vim-go', run = ':GoUpdateBinaries'}
+
+  -- Java
+  -- https://github.com/mfussenegger/nvim-jdtls
+  use {
+    'mfussenegger/nvim-jdtls',
+    ft = 'java'
+  } 
 end)

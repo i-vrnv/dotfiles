@@ -1,28 +1,7 @@
-local M = {}
 
-local lspconfig = require("lspconfig")
 
-function M.on_attach(client, bufnr)
-
-  -- Enable completion triggered by <C-X><C-O>
-  -- See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  require("main.lsp.handlers").setup()
-  require("main.lsp.keymaps").setup()
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- TODO Here we need to check if cmp is not loaded
-M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
-
-function M.setup()
-  lspconfig.gopls.setup{
-    cmd = {'gopls'},
-    -- for postfix snippets and analyzers
-    capabilities = M.capabilities,
+local servers = {
+  gopls = {
     settings = {
       gopls = {
         experimentalPostfixCompletions = true,
@@ -33,8 +12,64 @@ function M.setup()
         staticcheck = true,
       },
     },
-    on_attach = M.on_attach,
-  }
+  },
+  sumneko_lua = {
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = vim.split(package.path, ";"),
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        telemetry = { enable = false },
+      },
+    },
+  },
+}
+
+function on_attach(client, bufnr)
+
+  -- Enable completion triggered by <C-X><C-O>
+  -- See `:help omnifunc` and `:help ins-completion` for more information.
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  require("main.lsp.keymaps").setup(client, bufnr)
+  require("main.lsp.highlights").setup(client, bufnr)
 end
 
-return M
+require("main.lsp.handlers").setup(client, bufnr)
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if status_ok then
+  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
+end
+
+local server_opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require("mason").setup({})
+
+require("mason-lspconfig").setup({
+  ensure_installed = vim.tbl_keys(servers),
+  automatic_installation = false,
+})
+
+local lspconfig = require("lspconfig")
+
+require("mason-lspconfig").setup_handlers({
+  function(server_name)
+    local extended_opts = vim.tbl_deep_extend("force", server_opts, servers[server_name] or {})
+    lspconfig[server_name].setup(extended_opts)
+  end,
+})
+
