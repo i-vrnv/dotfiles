@@ -9,6 +9,12 @@ return require('packer').startup(function(use)
   -- nvim-lua/plenary.nvim
   use('nvim-lua/plenary.nvim')
 
+  -- https://github.com/nvim-treesitter/nvim-treesitter
+  use('nvim-treesitter/nvim-treesitter', {
+    event = "BufReadPre",
+    run = ':TSUpdate',
+  })
+
   -- https://github.com/nvim-lualine/lualine.nvim
   use({
     "nvim-lualine/lualine.nvim",
@@ -29,7 +35,6 @@ return require('packer').startup(function(use)
       require("main.bufferline").setup()
     end,
   }
-
 
   -- https://github.com/TimUntersberger/neogit
   use {
@@ -54,7 +59,7 @@ return require('packer').startup(function(use)
   use {
     "simrat39/symbols-outline.nvim",
     config = function()
-      require("main.outline")
+      require("main.outline").setup()
     end,
   }
 
@@ -64,13 +69,7 @@ return require('packer').startup(function(use)
     config = function()
       require("main.telescope").setup()
     end,
-}
-
-  -- https://github.com/nvim-treesitter/nvim-treesitter
-  use('nvim-treesitter/nvim-treesitter', {
-    event = "BufReadPre",
-    run = ':TSUpdate',
-  })
+  }
 
   -- Auto pairs
   -- https://github.com/windwp/nvim-autopairs
@@ -83,44 +82,38 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- CMP
-  use {
-    "danymat/neogen",
-    config = function()
-      require("main.neogen").setup()
-    end,
-    -- cmd = { "Neogen" },
-    module = "neogen",
-    disable = false,
-  }
+  -- code documentation
 
+  -- CMP
   use {
     "hrsh7th/nvim-cmp",
     config = function()
       require("main.cmp").setup()
     end,
+    wants = { "LuaSnip" },
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "ray-x/cmp-treesitter",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+      "danymat/neogen"
+    },
   }
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-cmdline")
 
   -- LSP
   use({
     "neovim/nvim-lspconfig",
-    -- event = "BufReadPre",
     requires = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      {
-        "L3MON4D3/LuaSnip",
-        -- config = function()
-        --   require("config.luasnip")
-        -- end,
-      },
     },
     config = function()
-      require("main.lsp")
+      require("main.lsp") -- setup()?
     end,
   })
 
@@ -128,7 +121,7 @@ return require('packer').startup(function(use)
   -- https://github.com/mfussenegger/nvim-dap
   use('mfussenegger/nvim-dap')
   -- https://github.com/rcarriga/nvim-dap-ui
-  use("rcarriga/nvim-dap-ui") 
+  use("rcarriga/nvim-dap-ui")
 
   -- Golang
   -- https://github.com/fatih/vim-go
@@ -136,8 +129,8 @@ return require('packer').startup(function(use)
 
   -- Java
   -- https://github.com/mfussenegger/nvim-jdtls
-  use {
-    'mfussenegger/nvim-jdtls',
-    ft = 'java'
-  } 
+  --use {
+  --  'mfussenegger/nvim-jdtls',
+  --  ft = 'java'
+  --}
 end)

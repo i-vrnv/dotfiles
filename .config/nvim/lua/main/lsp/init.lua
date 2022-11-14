@@ -1,5 +1,3 @@
-
-
 local servers = {
   gopls = {
     settings = {
@@ -32,29 +30,30 @@ local servers = {
   },
 }
 
-function on_attach(client, bufnr)
+function On_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require("main.lsp.keymaps").setup(client, bufnr)
-  require("main.lsp.highlights").setup(client, bufnr)
+  --require("main.lsp.highlights").setup(client, bufnr)
+  --require("main.lsp.formatting").setup(client, bufnr)
 end
 
-require("main.lsp.handlers").setup(client, bufnr)
+require("main.lsp.handlers").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if status_ok then
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities) -- for nvim-cmp
 end
 
 local server_opts = {
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = On_attach,
 }
 
 require("mason").setup({})
