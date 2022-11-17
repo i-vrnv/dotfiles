@@ -5,9 +5,24 @@ function M.setup()
     snippet_engine = "luasnip",
     enabled = true,
     languages = {
+      go = {
+        template = {
+          annotation_convention = "godoc",
+        },
+      },
+      java = {
+        template = {
+          annotation_convention = "javadoc",
+        },
+      },
       lua = {
         template = {
           annotation_convention = "ldoc",
+        },
+      },
+      php = {
+        template = {
+          annotation_convention = "phpdoc",
         },
       },
       python = {

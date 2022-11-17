@@ -11,6 +11,10 @@ nnoremap("<leader>pv", "<cmd>Ex<CR>")
 nnoremap("n", "nzz", default_opts)
 nnoremap("N", "Nzz", default_opts)
 
+-- Center up & down scrolling
+nnoremap("<C-u>", "<C-u>zz", default_opts)
+nnoremap("<C-d>", "<C-d>zz", default_opts)
+
 -- Better indent
 vnoremap("<", "<gv", default_opts)
 vnoremap(">", ">gv", default_opts)
