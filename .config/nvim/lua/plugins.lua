@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
   use {
     'TimUntersberger/neogit',
     cmd = 'Neogit',
+    module = { "neogit" },
     config = function()
       require('main.neogit').setup()
     end,
@@ -142,19 +143,40 @@ return require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
     },
     config = function()
-      require('main.lsp') -- setup()?
+      require('main.lsp')
     end,
   })
 
   -- DAP
   -- https://github.com/mfussenegger/nvim-dap
-  use('mfussenegger/nvim-dap')
   -- https://github.com/rcarriga/nvim-dap-ui
-  use('rcarriga/nvim-dap-ui')
+  use {
+    "mfussenegger/nvim-dap",
+    -- opt = true,
+    -- module = { "dap" },
+    requires = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "nvim-telescope/telescope-dap.nvim",
+      "leoluz/nvim-dap-go",
+      --{ "mfussenegger/nvim-dap-python", module = { "dap-python" } },
+    },
+    config = function()
+      require("main.dap").setup()
+    end,
+  }
 
   -- Golang
-  -- https://github.com/fatih/vim-go
-  -- use {'fatih/vim-go', run = ':GoUpdateBinaries'}
+  use {
+    "ray-x/go.nvim",
+    ft = { "go" },
+    requires = {
+      "ray-x/guihua.lua"
+    },
+    config = function()
+      require("go").setup()
+    end,
+  }
 
   -- Java
   -- https://github.com/mfussenegger/nvim-jdtls
