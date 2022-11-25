@@ -56,7 +56,11 @@ local server_opts = {
     on_attach = On_attach,
 }
 
-require("mason").setup({})
+require("mason").setup({
+   ui = {
+       border = "rounded"
+   }
+})
 
 require("mason-lspconfig").setup({
   ensure_installed = vim.tbl_keys(servers),
