@@ -28,9 +28,10 @@ local servers = {
       },
     },
   },
+  phpactor = {},
 }
 
-function On_attach(client, bufnr)
+local function on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
@@ -53,7 +54,7 @@ end
 
 local server_opts = {
     capabilities = capabilities,
-    on_attach = On_attach,
+    on_attach = on_attach,
 }
 
 require("mason").setup({

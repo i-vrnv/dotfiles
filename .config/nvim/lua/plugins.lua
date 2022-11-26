@@ -3,20 +3,26 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
 
-  -- themes
-  use('folke/tokyonight.nvim')
-
+  -- SYNTAX --
   -- https://github.com/nvim-lua/plenary.nvim 
   use('nvim-lua/plenary.nvim')
 
   -- https://github.com/nvim-treesitter/nvim-treesitter
-  use('nvim-treesitter/nvim-treesitter', {
+  use {
+    'nvim-treesitter/nvim-treesitter',
     event = 'BufReadPre',
     run = ':TSUpdate',
-  })
+    config = function()
+      require("main.treesitter").setup()
+    end,
+  }
+
+  -- VIEW --
+  -- https://github.com/folke/tokyonight.nvim
+  use('folke/tokyonight.nvim')
 
   -- https://github.com/nvim-lualine/lualine.nvim
-  use({
+  use {
     'nvim-lualine/lualine.nvim',
     event = 'VimEnter',
     after = 'nvim-treesitter',
@@ -24,7 +30,7 @@ return require('packer').startup(function(use)
     config = function()
       require('main.lualine').setup()
     end,
-  })
+  }
 
   -- https://github.com/akinsho/bufferline.nvim 
   use {
@@ -36,6 +42,7 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- GIT ---
   -- https://github.com/TimUntersberger/neogit
   use {
     'TimUntersberger/neogit',
@@ -48,14 +55,14 @@ return require('packer').startup(function(use)
   -- https://github.com/lewis6991/gitsigns.nvim
   use {
     'lewis6991/gitsigns.nvim',
-    -- event = 'BufReadPre',
     wants = 'plenary.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('main.gitsigns').setup()
     end,
   }
-  -- A tree like view for vim
+
+  -- NAV --
   -- https://github.com/simrat39/symbols-outline.nvim
   use {
     'simrat39/symbols-outline.nvim',
@@ -65,13 +72,20 @@ return require('packer').startup(function(use)
   }
 
   -- https://github.com/nvim-telescope/telescope.nvim
-  use{
+  use {
     'nvim-telescope/telescope.nvim',
     config = function()
       require('main.telescope').setup()
     end,
+    requires = {
+        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        "nvim-telescope/telescope-ui-select.nvim"
+    }
   }
 
+  use { "junegunn/fzf", run = "./install --all" }
+
+  -- EDIT --
   -- https://github.com/windwp/nvim-autopairs
   use {
     'windwp/nvim-autopairs',
@@ -82,6 +96,7 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- CMP --
   -- https://github.com/hrsh7th/nvim-cmp
   use {
     -- cmp engine
@@ -119,7 +134,7 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- LSP
+  -- LSP -- 
   use({
     'neovim/nvim-lspconfig',
     requires = {
