@@ -1,0 +1,139 @@
+
+"source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+:set relativenumber
+:set number
+
+let mapleader ="\<Space>"
+
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
+set clipboard+=unnamed
+
+" navigation
+nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
+nnoremap <Leader>s :action FileStructurePopup<CR>
+
+" build and debug actions
+nnoremap <Leader>bl :action ViewBreakpoints<CR>
+nnoremap <Leader>bP :action EditBreakpoint<CR>
+nnoremap <Leader>bp :action ToggleLineBreakpoint<CR>
+nnoremap <Leader>bB :action Compile<CR>
+nnoremap <Leader>bb :action CompileDirty<CR>
+nnoremap <Leader>bx :action RunClass<CR>
+nnoremap <Leader>bX :action DebugClass<CR>
+nnoremap <Leader>br :action Run<CR>
+nnoremap <Leader>bR :action ChooseRunConfiguration<CR>
+nnoremap <Leader>bd :action Debug<CR>
+nnoremap <Leader>bD :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>bc :action CreateRunConfiguration<CR>
+nnoremap <Leader>bC :action editRunConfigurations<CR>
+
+" extract actions
+nnoremap <Leader>ei :action ExtractInterface<CR>
+nnoremap <Leader>es :action ExtractSuperclass<CR>
+nnoremap <Leader>en :action ExtractClass<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+vnoremap <Leader>em :action ExtractMethod<CR>
+nnoremap <Leader>ev :action IntroduceVariable<CR>
+nnoremap <Leader>ef :action IntroduceField<CR>
+nnoremap <Leader>ep :action IntroduceParameter<CR>
+nnoremap <Leader>ec :action IntroduceConstant<CR>
+
+" find
+nnoremap <Leader>fS :action Find<CR>
+vnoremap <Leader>fS :action Find<CR>
+nnoremap <Leader>fs :action FindInPath<CR>
+vnoremap <Leader>fs :action FindInPath<CR>
+nnoremap <Leader>fc :action GotoClass<CR>
+vnoremap <Leader>fc :action GotoClass<CR>
+nnoremap <Leader>ff :action GotoFile<CR>
+vnoremap <Leader>ff :action GotoFile<CR>
+nnoremap <Leader>fm :action GotoSymbol<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
+
+" goto
+nnoremap <Leader>gi :action GotoImplementation<CR>
+" working as cmd + b but I need go to declaraiton, not to implementation
+nnoremap <Leader>gd :action GotoDeclaration<CR> 
+nnoremap <Leader>gp :action GotoSuperMethod<CR>
+nnoremap <Leader>gt :action GotoTest<CR>
+nnoremap <Leader>gb :action Back<CR>
+nnoremap <Leader>gf :action Forward<CR>
+nnoremap <Leader>pr :action RecentChangedFiles<CR>
+
+nnoremap <Leader>g0 :action GotoBookmark0<CR>
+nnoremap <Leader>g1 :action GotoBookmark1<CR>
+nnoremap <Leader>g2 :action GotoBookmark2<CR>
+nnoremap <Leader>g3 :action GotoBookmark3<CR>
+nnoremap <Leader>g4 :action GotoBookmark4<CR>
+nnoremap <Leader>g5 :action GotoBookmark5<CR>
+nnoremap <Leader>g6 :action GotoBookmark6<CR>
+nnoremap <Leader>g7 :action GotoBookmark7<CR>
+nnoremap <Leader>g8 :action GotoBookmark8<CR>
+nnoremap <Leader>g9 :action GotoBookmark9<CR>
+
+" refactoring actions
+nnoremap <Leader>ri :action Inline<CR>
+nnoremap <Leader>rr :action RenameElement<CR>i
+nnoremap <Leader>rj :action MemberPushDown<CR>
+nnoremap <Leader>rk :action MemberPullUp<CR>
+nnoremap <Leader>rs :action ChangeSignature<CR>
+nnoremap <Leader>rd :action SafeDelete<CR>
+nnoremap <Leader>rm :action Move<CR>
+nnoremap <Leader>rc :action CopyElement<CR>
+
+" marks
+nnoremap <Leader>ml :action ShowBookmarks<CR>
+nnoremap <Leader>mw :action ToggleBookmarkWithMnemonic<CR>
+nnoremap <Leader>mm :action ToggleBookmark<CR>
+nnoremap <Leader>m0 :action ToggleBookmark0<CR>
+nnoremap <Leader>m1 :action ToggleBookmark1<CR>
+nnoremap <Leader>m2 :action ToggleBookmark2<CR>
+nnoremap <Leader>m3 :action ToggleBookmark3<CR>
+nnoremap <Leader>m4 :action ToggleBookmark4<CR>
+nnoremap <Leader>m5 :action ToggleBookmark5<CR>
+nnoremap <Leader>m6 :action ToggleBookmark6<CR>
+nnoremap <Leader>m7 :action ToggleBookmark7<CR>
+nnoremap <Leader>m8 :action ToggleBookmark8<CR>
+nnoremap <Leader>m9 :action ToggleBookmark9<CR>
+
+" version control actions
+nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
+nnoremap <Leader>vp :action Vcs.Push<CR>
+nnoremap <Leader>G :action Vcs.QuickListPopupAction<CR>
+nnoremap <Leader>vb :action Git.Branches<CR>
+nnoremap <Leader>vv :action ActivateVersionControlToolWindow<CR>
+nnoremap <Leader>va :set norelativenumber<CR>:action Annotate<CR>
+
+" project
+nnoremap <Leader>ps :action Switcher<CR>
+
+" toggle relative numbers
+nnoremap <F4> :set relativenumber!<CR>
