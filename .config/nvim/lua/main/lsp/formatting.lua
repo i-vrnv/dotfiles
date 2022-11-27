@@ -13,8 +13,8 @@ function M.setup(client, bufnr)
       vim.fn.winrestview(view)
     end
 
-    local lsp_format_grp = api.nvim_create_augroup("LspFormat", { clear = true })
-    api.nvim_create_autocmd("BufWritePre", {
+    local lsp_format_grp = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
         vim.schedule(format)
       end,
