@@ -7,6 +7,7 @@ local default_opts = { noremap = true, silent = true }
 
 nnoremap("<leader>pv", "<cmd>Ex<CR>")
 
+nnoremap("<leader>s", "<cmd>SymbolsOutline<CR>")
 -- Center search results
 nnoremap("n", "nzz", default_opts)
 nnoremap("N", "Nzz", default_opts)
