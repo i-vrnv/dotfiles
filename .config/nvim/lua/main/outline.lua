@@ -8,6 +8,7 @@ function M.setup()
 
   require("symbols-outline").setup({
     auto_close = true,
+    highlight_hovered_item = true,
   })
 end
 
