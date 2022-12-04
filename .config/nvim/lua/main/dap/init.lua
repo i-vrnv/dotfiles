@@ -74,6 +74,7 @@ end
 
 local function configure_debuggers()
   require("main.dap.go").setup()
+  require("main.dap.php").setup()
   -- require("config.dap.lua").setup()
   -- require("config.dap.python").setup()
   -- require("config.dap.rust").setup()

@@ -64,6 +64,16 @@ return require('packer').startup(function(use)
   }
 
   -- NAV --
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    config = function()
+      require("nvim-tree").setup()
+    end,
+  }
+
   -- https://github.com/simrat39/symbols-outline.nvim
   use {
     'simrat39/symbols-outline.nvim',

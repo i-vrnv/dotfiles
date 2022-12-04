@@ -36,6 +36,8 @@ nnoremap <S-Tab> gT
 
 set clipboard+=unnamed
 
+nnoremap <C-h> :action ShowErrorDescription<CR>
+
 " navigation
 nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>s :action FileStructurePopup<CR>
