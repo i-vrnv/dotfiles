@@ -26,21 +26,30 @@ map Q gq
 
 " Find more examples here: https://jb.gg/share-ideavimrc
 
-:set relativenumber
-:set number
+set relativenumber
+set number
+
+set clipboard+=unnamed
+
+" https://github.com/JetBrains/ideavim/wiki/NERDTree-support
+set NERDTree
 
 let mapleader ="\<Space>"
 
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
-set clipboard+=unnamed
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 
 nnoremap <C-h> :action ShowErrorDescription<CR>
+
 
 " navigation
 nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>s :action FileStructurePopup<CR>
+
+nnoremap <Leader>a :action ShowIntentionActions<CR>
 
 " build and debug actions
 nnoremap <Leader>bl :action ViewBreakpoints<CR>
@@ -136,6 +145,8 @@ nnoremap <Leader>va :set norelativenumber<CR>:action Annotate<CR>
 
 " project
 nnoremap <Leader>ps :action Switcher<CR>
+nnoremap <Leader>pv :NERDTreeFocus<CR>
+nnoremap <Leader>pf :NERDTreeFind<CR>
 
 " toggle relative numbers
 nnoremap <F4> :set relativenumber!<CR>
