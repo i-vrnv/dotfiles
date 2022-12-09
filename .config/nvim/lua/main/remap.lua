@@ -5,7 +5,7 @@ local xnoremap = keymap.xnoremap
 
 local default_opts = { noremap = true, silent = true }
 
-nnoremap("<leader>pv", "<cmd>NvimTreeToggle<CR>")
+nnoremap("<leader>pv", "<cmd>NvimTreeFocus<CR>")
 nnoremap("<leader>pf", "<cmd>NvimTreeFindFile<CR>")
 
 nnoremap("<leader>s", "<cmd>SymbolsOutline<CR>")
