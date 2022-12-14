@@ -1,3 +1,14 @@
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+" Find more examples here: https://jb.gg/share-ideavimrc
 
 "source ~/.vimrc
 
@@ -9,23 +20,10 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
+" Show mode on status bar
+set showmode
 
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-
-
-" Find more examples here: https://jb.gg/share-ideavimrc
-
+" Relative numbers
 set relativenumber
 set number
 
@@ -36,14 +34,27 @@ set NERDTree
 
 let mapleader ="\<Space>"
 
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
+
+nnoremap / :action Find<CR>
+vnoremap / :action Find<CR>
 
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-nnoremap <C-h> :action ShowErrorDescription<CR>
+nnoremap <C-h> :action Back<CR>
+nnoremap <C-l> :action Forward<CR>
 
+nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
+nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
+
+nnoremap <C-k> :action ShowErrorDescription<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
 
 " navigation
 nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
@@ -90,25 +101,24 @@ nnoremap <Leader>fm :action GotoSymbol<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 
 " goto
-nnoremap <Leader>gi :action GotoImplementation<CR>
-" working as cmd + b but I need go to declaraiton, not to implementation
-nnoremap <Leader>gd :action GotoDeclaration<CR> 
-nnoremap <Leader>gp :action GotoSuperMethod<CR>
-nnoremap <Leader>gt :action GotoTest<CR>
-nnoremap <Leader>gb :action Back<CR>
-nnoremap <Leader>gf :action Forward<CR>
-nnoremap <Leader>pr :action RecentChangedFiles<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR> 
+nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gb :action Back<CR>
+nnoremap gf :action Forward<CR>
+nnoremap pr :action RecentChangedFiles<CR>
 
-nnoremap <Leader>g0 :action GotoBookmark0<CR>
-nnoremap <Leader>g1 :action GotoBookmark1<CR>
-nnoremap <Leader>g2 :action GotoBookmark2<CR>
-nnoremap <Leader>g3 :action GotoBookmark3<CR>
-nnoremap <Leader>g4 :action GotoBookmark4<CR>
-nnoremap <Leader>g5 :action GotoBookmark5<CR>
-nnoremap <Leader>g6 :action GotoBookmark6<CR>
-nnoremap <Leader>g7 :action GotoBookmark7<CR>
-nnoremap <Leader>g8 :action GotoBookmark8<CR>
-nnoremap <Leader>g9 :action GotoBookmark9<CR>
+nnoremap g0 :action GotoBookmark0<CR>
+nnoremap g1 :action GotoBookmark1<CR>
+nnoremap g2 :action GotoBookmark2<CR>
+nnoremap g3 :action GotoBookmark3<CR>
+nnoremap g4 :action GotoBookmark4<CR>
+nnoremap g5 :action GotoBookmark5<CR>
+nnoremap g6 :action GotoBookmark6<CR>
+nnoremap g7 :action GotoBookmark7<CR>
+nnoremap g8 :action GotoBookmark8<CR>
+nnoremap g9 :action GotoBookmark9<CR>
 
 " refactoring actions
 nnoremap <Leader>ri :action Inline<CR>
@@ -121,19 +131,19 @@ nnoremap <Leader>rm :action Move<CR>
 nnoremap <Leader>rc :action CopyElement<CR>
 
 " marks
-nnoremap <Leader>ml :action ShowBookmarks<CR>
-nnoremap <Leader>mw :action ToggleBookmarkWithMnemonic<CR>
-nnoremap <Leader>mm :action ToggleBookmark<CR>
-nnoremap <Leader>m0 :action ToggleBookmark0<CR>
-nnoremap <Leader>m1 :action ToggleBookmark1<CR>
-nnoremap <Leader>m2 :action ToggleBookmark2<CR>
-nnoremap <Leader>m3 :action ToggleBookmark3<CR>
-nnoremap <Leader>m4 :action ToggleBookmark4<CR>
-nnoremap <Leader>m5 :action ToggleBookmark5<CR>
-nnoremap <Leader>m6 :action ToggleBookmark6<CR>
-nnoremap <Leader>m7 :action ToggleBookmark7<CR>
-nnoremap <Leader>m8 :action ToggleBookmark8<CR>
-nnoremap <Leader>m9 :action ToggleBookmark9<CR>
+nnoremap ml :action ShowBookmarks<CR>
+nnoremap mw :action ToggleBookmarkWithMnemonic<CR>
+nnoremap mm :action ToggleBookmark<CR>
+nnoremap m0 :action ToggleBookmark0<CR>
+nnoremap m1 :action ToggleBookmark1<CR>
+nnoremap m2 :action ToggleBookmark2<CR>
+nnoremap m3 :action ToggleBookmark3<CR>
+nnoremap m4 :action ToggleBookmark4<CR>
+nnoremap m5 :action ToggleBookmark5<CR>
+nnoremap m6 :action ToggleBookmark6<CR>
+nnoremap m7 :action ToggleBookmark7<CR>
+nnoremap m8 :action ToggleBookmark8<CR>
+nnoremap m9 :action ToggleBookmark9<CR>
 
 " version control actions
 nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
