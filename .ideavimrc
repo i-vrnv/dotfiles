@@ -46,8 +46,7 @@ vnoremap / :action Find<CR>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-nnoremap <C-h> :action Back<CR>
-nnoremap <C-l> :action Forward<CR>
+nnoremap <C-h> :action ParameterInfo<CR>
 
 nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
 nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
