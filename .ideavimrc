@@ -88,13 +88,17 @@ xnoremap <Leader>eq :action QuickEvaluateExpression<CR>
 " extract actions
 nnoremap <Leader>ei :action ExtractInterface<CR>
 nnoremap <Leader>es :action ExtractSuperclass<CR>
-nnoremap <Leader>en :action ExtractClass<CR>
-nnoremap <Leader>em :action ExtractFunction<CR>
-vnoremap <Leader>em :action ExtractFunction<CR>
-nnoremap <Leader>ev :action IntroduceVariable<CR>
-nnoremap <Leader>ef :action IntroduceField<CR>
-nnoremap <Leader>ep :action IntroduceParameter<CR>
-nnoremap <Leader>ec :action IntroduceConstant<CR>
+nnoremap <Leader>ec :action ExtractClass<CR>
+nnoremap <Leader>ef :action ExtractFunction<CR>
+vnoremap <Leader>ef :action ExtractFunction<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+vnoremap <Leader>em :action ExtractMethod<CR>
+
+" introduce actions
+nnoremap <Leader>iv :action IntroduceVariable<CR>
+nnoremap <Leader>if :action IntroduceField<CR>
+nnoremap <Leader>ip :action IntroduceParameter<CR>
+nnoremap <Leader>ic :action IntroduceConstant<CR>
 
 " find
 nnoremap <Leader>fs :action FindInPath<CR>
