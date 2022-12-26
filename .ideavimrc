@@ -40,8 +40,8 @@ map Q gq
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
-nnoremap / :action Find<CR>
-vnoremap / :action Find<CR>
+nnoremap <Leader>/ :action Find<CR>
+vnoremap <Leader>/ :action Find<CR>
 
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
@@ -54,6 +54,9 @@ nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
 nnoremap <C-k> :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
+
+xnoremap J :action MoveLineDown<CR>
+xnoremap K :action MoveLineUp<CR>
 
 " navigation
 nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
@@ -76,20 +79,24 @@ nnoremap <Leader>bD :action ChooseDebugConfiguration<CR>
 nnoremap <Leader>bc :action CreateRunConfiguration<CR>
 nnoremap <Leader>bC :action editRunConfigurations<CR>
 
+nnoremap <Leader>ee :action EvaluateExpression<CR>
+xnoremap <Leader>ee :action EvaluateExpression<CR>
+
+nnoremap <Leader>eq :action QuickEvaluateExpression<CR>
+xnoremap <Leader>eq :action QuickEvaluateExpression<CR>
+
 " extract actions
 nnoremap <Leader>ei :action ExtractInterface<CR>
 nnoremap <Leader>es :action ExtractSuperclass<CR>
 nnoremap <Leader>en :action ExtractClass<CR>
-nnoremap <Leader>em :action ExtractMethod<CR>
-vnoremap <Leader>em :action ExtractMethod<CR>
+nnoremap <Leader>em :action ExtractFunction<CR>
+vnoremap <Leader>em :action ExtractFunction<CR>
 nnoremap <Leader>ev :action IntroduceVariable<CR>
 nnoremap <Leader>ef :action IntroduceField<CR>
 nnoremap <Leader>ep :action IntroduceParameter<CR>
 nnoremap <Leader>ec :action IntroduceConstant<CR>
 
 " find
-nnoremap <Leader>fS :action Find<CR>
-vnoremap <Leader>fS :action Find<CR>
 nnoremap <Leader>fs :action FindInPath<CR>
 vnoremap <Leader>fs :action FindInPath<CR>
 nnoremap <Leader>fc :action GotoClass<CR>
@@ -145,17 +152,23 @@ nnoremap m8 :action ToggleBookmark8<CR>
 nnoremap m9 :action ToggleBookmark9<CR>
 
 " version control actions
+nnoremap <Leader>G :action Vcs.QuickListPopupAction<CR>
 nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
 nnoremap <Leader>vp :action Vcs.Push<CR>
-nnoremap <Leader>G :action Vcs.QuickListPopupAction<CR>
 nnoremap <Leader>vb :action Git.Branches<CR>
 nnoremap <Leader>vv :action ActivateVersionControlToolWindow<CR>
-nnoremap <Leader>va :set norelativenumber<CR>:action Annotate<CR>
+nnoremap <Leader>va :set relativenumber!<CR>:action Annotate<CR>
 
 " project
 nnoremap <Leader>ps :action Switcher<CR>
 nnoremap <Leader>pv :NERDTreeFocus<CR>
 nnoremap <Leader>pf :NERDTreeFind<CR>
+
+nnoremap <Leader>w :action SurroundWith<CR>
+vnoremap <Leader>w :action SurroundWith<CR>
+
+nnoremap <Leader>x :action CloseContent<CR>
+nnoremap <Leader>X :action CloseAllEditorsButActive<CR>
 
 " toggle relative numbers
 nnoremap <F4> :set relativenumber!<CR>
