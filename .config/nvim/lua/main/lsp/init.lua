@@ -30,6 +30,7 @@ local servers = {
   },
   phpactor = {},
   kotlin_language_server = {},
+  tsserver = {},
 }
 
 local function on_attach(client, bufnr)
