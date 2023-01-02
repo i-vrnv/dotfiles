@@ -16,7 +16,6 @@ set relativenumber
 set number
 
 " Shared clipboard
-" Default clipboard=ideaput,autoselect,exclude:cons\|linux
 "set clipboard+=unnamed
 
 " https://github.com/JetBrains/ideavim/wiki/NERDTree-support
@@ -36,12 +35,13 @@ vnoremap <Leader>/ :action Find<CR>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-nnoremap <C-h> :action ParameterInfo<CR>
+" не лучшее решение, не работает в режиме редактирования и зптирает удаление
+inoremap <C-k> :action ParameterInfo<CR>
 
 nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
 nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
 
-nnoremap <C-k> :action ShowErrorDescription<CR>
+"nnoremap <C-k> :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 
