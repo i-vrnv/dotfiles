@@ -4,13 +4,10 @@ return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- SYNTAX --
-  -- https://github.com/nvim-lua/plenary.nvim 
-  use('nvim-lua/plenary.nvim')
-
   -- https://github.com/nvim-treesitter/nvim-treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufReadPre',
+    requires = { {'nvim-lua/plenary.nvim'} },
     run = ':TSUpdate',
     config = function()
       require("main.treesitter").setup()
@@ -24,7 +21,6 @@ return require('packer').startup(function(use)
   -- https://github.com/nvim-lualine/lualine.nvim
   use {
     'nvim-lualine/lualine.nvim',
-    event = 'VimEnter',
     after = 'nvim-treesitter',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
@@ -90,11 +86,9 @@ return require('packer').startup(function(use)
     end,
     requires = {
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-        "nvim-telescope/telescope-ui-select.nvim"
+        { "nvim-telescope/telescope-ui-select.nvim" }
     }
   }
-
-  use { "junegunn/fzf", run = "./install --all" }
 
   -- EDIT --
   -- https://github.com/windwp/nvim-autopairs
@@ -107,55 +101,30 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- CMP --
-  -- https://github.com/hrsh7th/nvim-cmp
   use {
-    -- cmp engine
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require('main.cmp').setup()
-    end,
-    wants = { 'LuaSnip' },
-    requires = {
-      -- cmp sources
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'ray-x/cmp-treesitter',
-      -- snippet
-      {
-        'L3MON4D3/LuaSnip',
-        wants = { 'friendly-snippets', 'vim-snippets', 'neogen' },
-        config = function()
-          require('main.snip').setup()
-        end,
-      },
-      {
-        'danymat/neogen',
-        config = function()
-          require('main.neogen').setup()
-        end,
-      },
-      'saadparwaiz1/cmp_luasnip',
-      'rafamadriz/friendly-snippets',
-      --'honza/vim-snippets',
-    }
-  }
+	  'VonHeikemen/lsp-zero.nvim',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
 
-  -- LSP -- 
-  use({
-    'neovim/nvim-lspconfig',
-    requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-    },
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  },
     config = function()
-      require('main.lsp')
+      require('main.lsp').setup()
     end,
-  })
+  }
 
   -- DAP
   -- https://github.com/mfussenegger/nvim-dap
@@ -186,12 +155,6 @@ return require('packer').startup(function(use)
     config = function()
       require("go").setup()
     end,
+    disable = true
   }
-
-  -- Java
-  -- https://github.com/mfussenegger/nvim-jdtls
-  --use {
-  --  'mfussenegger/nvim-jdtls',
-  --  ft = 'java'
-  --}
 end)

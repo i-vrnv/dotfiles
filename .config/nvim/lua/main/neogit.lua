@@ -1,10 +1,6 @@
 local M = {}
 
 function M.setup()
-  local remap = require("main.keymap")
-  local nnoremap = remap.nnoremap
-  nnoremap("<leader>G", ":Neogit<CR>")
-
   require("neogit").setup {
     disable_signs = false,
     disable_hint = false,
