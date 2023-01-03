@@ -1,61 +1,55 @@
-local keymap = require("main.keymap")
-local nnoremap = keymap.nnoremap
-local vnoremap = keymap.vnoremap
-local xnoremap = keymap.xnoremap
+local default_opts =  {}
 
-local default_opts = { noremap = true, silent = true }
+vim.g.mapleader = " "
 
-nnoremap("<leader>pv", "<cmd>NvimTreeFocus<CR>")
-nnoremap("<leader>pf", "<cmd>NvimTreeFindFile<CR>")
+vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "q", "<nop>")
 
-nnoremap("<leader>s", "<cmd>SymbolsOutline<CR>")
+vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeFocus<CR>")
+vim.keymap.set("n", "<leader>pf", "<cmd>NvimTreeFindFile<CR>")
+
+vim.keymap.set("n", "<leader>s", "<cmd>SymbolsOutline<CR>")
 -- Center search results
-nnoremap("n", "nzz", default_opts)
-nnoremap("N", "Nzz", default_opts)
+vim.keymap.set("n", "n", "nzz", default_opts)
+vim.keymap.set("n", "N", "Nzz", default_opts)
 
 -- Center up & down scrolling
-nnoremap("<C-u>", "<C-u>zz", default_opts)
-nnoremap("<C-d>", "<C-d>zz", default_opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", default_opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", default_opts)
 
 -- Better indent
-vnoremap("<", "<gv", default_opts)
-vnoremap(">", ">gv", default_opts)
+vim.keymap.set("v", "<", "<gv", default_opts)
+vim.keymap.set("v", ">", ">gv", default_opts)
 
 -- Paste over currently selected text without yanking it
-vnoremap("p", '"_dP', default_opts)
+vim.keymap.set("v", "p", '"_dP', default_opts)
 
 -- Switch buffer
-nnoremap("]b", ":bn<CR>", default_opts)
-nnoremap("[b", ":bp<CR>", default_opts)
-nnoremap("<leader>bd", ":bd<CR>", default_opts)
+vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
+vim.keymap.set("n", "[b", ":bp<CR>", default_opts)
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", default_opts)
 
 -- Bufferline
-nnoremap("<Tab>", ":BufferLineCycleNext<CR>", default_opts)
-nnoremap("<S-Tab>", ":BufferLineCyclePrev<CR>", default_opts)
-nnoremap("<leader>bp", ":BufferLinePick<CR>", default_opts)
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", default_opts)
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", default_opts)
+vim.keymap.set("n", "<leader>bp", ":BufferLinePick<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
-nnoremap("<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
+vim.keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
-xnoremap("K", ":move '<-2<CR>gv-gv", default_opts)
-xnoremap("J", ":move '>+1<CR>gv-gv", default_opts)
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", default_opts)
 
 -- Resizing panes
-nnoremap("<Left>", ":vertical resize +1<CR>", default_opts)
-nnoremap("<Right>", ":vertical resize -1<CR>", default_opts)
-nnoremap("<Up>", ":resize -1<CR>", default_opts)
-nnoremap("<Down>", ":resize +1<CR>", default_opts)
+vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
+vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", default_opts)
+vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
+vim.keymap.set("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
-nnoremap("<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
+vim.keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
-xnoremap("K", ":move '<-2<CR>gv-gv", default_opts)
-xnoremap("J", ":move '>+1<CR>gv-gv", default_opts)
-
--- Resizing panes
-nnoremap("<Left>", ":vertical resize +1<CR>", default_opts)
-nnoremap("<Right>", ":vertical resize -1<CR>", default_opts)
-nnoremap("<Up>", ":resize -1<CR>", default_opts)
-nnoremap("<Down>", ":resize +1<CR>", default_opts)
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", default_opts)
