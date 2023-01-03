@@ -1,29 +1,15 @@
-" Find more examples here: https://jb.gg/share-ideavimrc
-
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
-
-" Do incremental searching.
 set incsearch
-
-" Show mode on status bar
 set showmode
-
-" Relative numbers
 set relativenumber
 set number
-
-" Shared clipboard
-"set clipboard+=unnamed
+set idearefactormode=keep
 
 " https://github.com/JetBrains/ideavim/wiki/NERDTree-support
 set NERDTree
 
 let mapleader ="\<Space>"
 
-" Don't use Ex mode, use Q for formatting.
 map Q gq
 
 nnoremap <Tab> gt
@@ -35,13 +21,12 @@ vnoremap <Leader>/ :action Find<CR>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-" не лучшее решение, не работает в режиме редактирования и зптирает удаление
 inoremap <C-k> :action ParameterInfo<CR>
 
 nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
 nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
 
-"nnoremap <C-k> :action ShowErrorDescription<CR>
+nnoremap <Leader>d :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 
@@ -121,7 +106,7 @@ nnoremap g9 :action GotoBookmark9<CR>
 
 " refactoring actions
 nnoremap <Leader>ri :action Inline<CR>
-nnoremap <Leader>rr :action RenameElement<CR>i
+nnoremap <Leader>rr :action RenameElement<CR>
 nnoremap <Leader>rj :action MemberPushDown<CR>
 nnoremap <Leader>rk :action MemberPullUp<CR>
 nnoremap <Leader>rs :action ChangeSignature<CR>
@@ -145,6 +130,9 @@ nnoremap m8 :action ToggleBookmark8<CR>
 nnoremap m9 :action ToggleBookmark9<CR>
 
 " version control actions
+" добавить навигацию по изменеиям
+"VcsShowNextChangeMarker
+"VcsShowPrevChangeMarker
 nnoremap <Leader>G :action Vcs.QuickListPopupAction<CR>
 nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
 nnoremap <Leader>vp :action Vcs.Push<CR>
