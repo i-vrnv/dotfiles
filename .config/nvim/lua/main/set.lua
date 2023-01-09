@@ -1,7 +1,10 @@
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.errorbells = false
+
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
