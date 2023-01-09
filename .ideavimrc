@@ -30,14 +30,17 @@ nnoremap <Leader>d :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 
+nnoremap H :action Back<CR>
+nnoremap L :action Forward<CR>
+
 xnoremap J :action MoveLineDown<CR>
 xnoremap K :action MoveLineUp<CR>
+
+nnoremap <Leader>a :action ShowIntentionActions<CR>
 
 " navigation
 nnoremap <Leader>n :action ActivateProjectToolWindow<CR>
 nnoremap <Leader>s :action FileStructurePopup<CR>
-
-nnoremap <Leader>a :action ShowIntentionActions<CR>
 
 " build and debug actions
 nnoremap <Leader>bl :action ViewBreakpoints<CR>
@@ -84,6 +87,11 @@ nnoremap <Leader>ff :action GotoFile<CR>
 vnoremap <Leader>ff :action GotoFile<CR>
 nnoremap <Leader>fm :action GotoSymbol<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
+
+" hierarchy
+nnoremap <Leader>hc :action CallHierarchy<CR>
+nnoremap <Leader>hm :action MethodHierarchy<CR>
+nnoremap <Leader>ht :action TypeHierarchy<CR>
 
 " goto
 nnoremap gi :action GotoImplementation<CR>
