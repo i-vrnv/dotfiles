@@ -9,6 +9,7 @@ vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeFocus<CR>")
 vim.keymap.set("n", "<leader>pf", "<cmd>NvimTreeFindFile<CR>")
 
 vim.keymap.set("n", "<leader>s", "<cmd>SymbolsOutline<CR>")
+
 -- Center search results
 vim.keymap.set("n", "n", "nzz", default_opts)
 vim.keymap.set("n", "N", "Nzz", default_opts)
@@ -16,6 +17,9 @@ vim.keymap.set("n", "N", "Nzz", default_opts)
 -- Center up & down scrolling
 vim.keymap.set("n", "<C-u>", "<C-u>zz", default_opts)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", default_opts)
+
+-- Copy to system clipboard
+vim.keymap.set("x", "<leader>y",'"*y', default_opts)
 
 -- Better indent
 vim.keymap.set("v", "<", "<gv", default_opts)
