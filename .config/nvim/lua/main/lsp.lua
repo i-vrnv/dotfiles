@@ -36,6 +36,10 @@ function M.setup()
 
   cmp.setup(cmp_config)
 
+  lsp.setup_nvim_cmp({
+    preselect = cmp.PreselectMode.None
+  })
+
   -- keybindings
   lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
