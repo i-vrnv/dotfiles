@@ -32,6 +32,7 @@ function M.setup()
 
   cmp.setup {
     completion = { completeopt = "menu,menuone,noselect,noinsert", keyword_length = 1 },
+    preselect = cmp.PreselectMode.None,
     sorting = {
       priority_weight = 2,
       comparators = {
