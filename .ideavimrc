@@ -36,6 +36,8 @@ nnoremap L :action Forward<CR>
 xnoremap J :action MoveLineDown<CR>
 xnoremap K :action MoveLineUp<CR>
 
+xnoremap <Leader>y '"*y'
+
 nnoremap <Leader>a :action ShowIntentionActions<CR>
 
 " navigation
