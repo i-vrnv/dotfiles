@@ -5,8 +5,17 @@ function M.setup()
 
   vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
   vim.keymap.set("n", "<Leader>fs", builtin.live_grep, {})
+  vim.keymap.set("n", "<Leader>fg", builtin.git_files, {})
+  vim.keymap.set("n", "<Leader>/", function()
+    builtin.current_buffer_fuzzy_find({ fuzzy = flase, case_mode = ignore_case })
+  end, {})
+
+
   vim.keymap.set("n", "<Leader>pb", builtin.buffers, {})
   vim.keymap.set('n', '<leader>ps', function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end)
+
+  vim.keymap.set("n", "<Leader>vc", builtin.git_commits, {})
+  vim.keymap.set("n", "<Leader>vb", builtin.git_branches, {})
 
   require('telescope').setup{
     defaults = {

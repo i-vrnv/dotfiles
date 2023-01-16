@@ -22,6 +22,7 @@ M.setup = function(_, bufnr)
     vim.keymap.set("n", "gr", telescope.lsp_references, opts)
     vim.keymap.set("n", "gI", telescope.lsp_incoming_calls, opts)
     vim.keymap.set("n", "gO", telescope.lsp_outgoing_calls, opts)  end
+    vim.keymap.set("n", "<leader>s", telescope.lsp_document_symbols, opts)
   end
 
 return M
