@@ -36,7 +36,7 @@ nnoremap L :action Forward<CR>
 xnoremap J :action MoveLineDown<CR>
 xnoremap K :action MoveLineUp<CR>
 
-xnoremap <Leader>y '"*y'
+xnoremap <Leader>y "+y
 
 nnoremap <Leader>a :action ShowIntentionActions<CR>
 
@@ -141,6 +141,7 @@ nnoremap m9 :action ToggleBookmark9<CR>
 
 " version control actions
 " добавить навигацию по изменеиям
+"VcsShowCurrentChangeMarker
 "VcsShowNextChangeMarker
 "VcsShowPrevChangeMarker
 nnoremap <Leader>G :action Vcs.QuickListPopupAction<CR>
@@ -149,6 +150,7 @@ nnoremap <Leader>vp :action Vcs.Push<CR>
 nnoremap <Leader>vb :action Git.Branches<CR>
 nnoremap <Leader>vv :action ActivateVersionControlToolWindow<CR>
 nnoremap <Leader>va :set relativenumber!<CR>:action Annotate<CR>
+nnoremap <Leader>vnb :action Git.CreateNewBranch<CR>
 
 " project
 nnoremap <Leader>ps :action Switcher<CR>
