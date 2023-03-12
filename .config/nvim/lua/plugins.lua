@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
   -- VIEW --
   -- https://github.com/folke/tokyonight.nvim
   use('folke/tokyonight.nvim')
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- https://github.com/nvim-lualine/lualine.nvim
   use {
