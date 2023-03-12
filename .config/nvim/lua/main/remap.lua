@@ -2,6 +2,8 @@ local default_opts =  {}
 
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<F1>", "<nop>")
+
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "q", "<nop>")
 
