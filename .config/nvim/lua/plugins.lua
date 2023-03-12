@@ -1,5 +1,3 @@
-vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
 
@@ -164,7 +162,6 @@ return require('packer').startup(function(use)
       "theHamsta/nvim-dap-virtual-text",
       "nvim-telescope/telescope-dap.nvim",
       "leoluz/nvim-dap-go",
-      --{ "mfussenegger/nvim-dap-python", module = { "dap-python" } },
     },
     config = function()
       require("main.dap").setup()
@@ -181,6 +178,7 @@ return require('packer').startup(function(use)
     config = function()
       require("go").setup()
     end,
+    disable = true,
   }
 
   -- Java

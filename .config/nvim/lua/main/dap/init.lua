@@ -1,10 +1,10 @@
 local M = {}
 
 local function configure()
-  -- local dap_install = require "dap-install"
-  -- dap_install.setup {
-  --   installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
-  -- }
+  --local dap_install = require "dap-install"
+  --dap_install.setup {
+  --  installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
+  --}
 
   -- TODO icons?
   local dap_breakpoint = {
@@ -74,7 +74,7 @@ end
 
 local function configure_debuggers()
   require("main.dap.go").setup()
-  require("main.dap.php").setup()
+  -- require("main.dap.php").setup()
   -- require("config.dap.lua").setup()
   -- require("config.dap.python").setup()
   -- require("config.dap.rust").setup()
