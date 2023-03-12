@@ -12,7 +12,7 @@ local servers = {
       },
     },
   },
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         runtime = {
@@ -29,8 +29,8 @@ local servers = {
       },
     },
   },
-  phpactor = {},
-  kotlin_language_server = {},
+  --phpactor = {},
+  --kotlin_language_server = {},
   tsserver = {},
 }
 
