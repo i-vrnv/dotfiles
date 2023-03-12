@@ -134,12 +134,6 @@ return require('packer').startup(function(use)
           require('main.snip').setup()
         end,
       },
-      {
-        'danymat/neogen',
-        config = function()
-          require('main.neogen').setup()
-        end,
-      },
       'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
       --'honza/vim-snippets',
