@@ -30,6 +30,9 @@ nnoremap <Leader>d :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 
+nnoremap ]f :action FindNext<CR>
+nnoremap [f :action FindPrevious<CR>
+
 nnoremap H :action Back<CR>
 nnoremap L :action Forward<CR>
 
@@ -89,6 +92,7 @@ nnoremap <Leader>ff :action GotoFile<CR>
 vnoremap <Leader>ff :action GotoFile<CR>
 nnoremap <Leader>fm :action GotoSymbol<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
+nnoremap <Leader>fl :action FindUsagesInFile<CR>
 
 " hierarchy
 nnoremap <Leader>hc :action CallHierarchy<CR>
@@ -156,7 +160,7 @@ nnoremap <Leader>vnb :action Git.CreateNewBranch<CR>
 nnoremap <Leader>ps :action Switcher<CR>
 nnoremap <Leader>pv :NERDTreeFocus<CR>
 nnoremap <Leader>pf :NERDTreeFind<CR>
-nnoremap <Leader>pr :action RecentChangedFiles<CR>
+nnoremap <Leader>pr :action RecentFiles<CR>
 
 nnoremap <Leader>w :action SurroundWith<CR>
 vnoremap <Leader>w :action SurroundWith<CR>
