@@ -75,13 +75,6 @@ end
 local function configure_debuggers()
   require("main.dap.go").setup()
   -- require("main.dap.php").setup()
-  -- require("config.dap.lua").setup()
-  -- require("config.dap.python").setup()
-  -- require("config.dap.rust").setup()
-  -- require("config.dap.csharp").setup()
-  -- require("config.dap.kotlin").setup()
-  -- require("config.dap.javascript").setup()
-  -- require("config.dap.typescript").setup()
 end
 
 function M.setup()
@@ -89,6 +82,7 @@ function M.setup()
   configure_exts()
   configure_debuggers()
 
+  require('dap.ext.vscode').load_launchjs(nil, nil)
   require("main.dap.keymaps").setup() -- Keymaps
 end
 
