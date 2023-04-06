@@ -158,10 +158,10 @@ return require('packer').startup(function(use)
     -- opt = true,
     -- module = { "dap" },
     requires = {
+      "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-telescope/telescope-dap.nvim",
-      "leoluz/nvim-dap-go",
     },
     config = function()
       require("main.dap").setup()
