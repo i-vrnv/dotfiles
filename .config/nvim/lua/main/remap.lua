@@ -33,7 +33,7 @@ vim.keymap.set("v", "p", '"_dP', default_opts)
 -- Switch buffer
 vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
 vim.keymap.set("n", "[b", ":bp<CR>", default_opts)
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", default_opts)
+vim.keymap.set("n", "<leader>x", ":bd<CR>", default_opts)
 
 -- Bufferline
 vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", default_opts)
