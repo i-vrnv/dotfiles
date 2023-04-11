@@ -15,6 +15,13 @@ return require('packer').startup(function(use)
     end,
   }
 
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require("main.treesitter-context").setup()
+    end,
+  }
+
   -- VIEW --
   -- https://github.com/folke/tokyonight.nvim
   use('folke/tokyonight.nvim')
