@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
-LOCALRC=.localrc
+
+LOCALRC="~/.localrc"
 test -f $LOCALRC && source $LOCALRC
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -12,6 +12,7 @@ plugins=(git brew docker docker-compose gcloud golang)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
+source ~/.scripts/git
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
