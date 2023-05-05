@@ -96,6 +96,13 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "mbbill/undotree",
+    config = function()
+      require('main.undotree').setup()
+    end,
+  }
+
+  use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     requires = {
