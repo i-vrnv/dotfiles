@@ -21,6 +21,9 @@ vnoremap <Leader>/ :action Find<CR>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
 inoremap <C-k> :action ParameterInfo<CR>
 
 nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
@@ -104,8 +107,6 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR> 
 nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
-nnoremap gb :action Back<CR>
-nnoremap gf :action Forward<CR>
 
 nnoremap g0 :action GotoBookmark0<CR>
 nnoremap g1 :action GotoBookmark1<CR>
