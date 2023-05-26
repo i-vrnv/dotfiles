@@ -1,7 +1,8 @@
 local M = {}
 
 function M.setup()
-  vim.keymap.set("n", "<leader>G", ":Neogit<CR>")
+  -- moved to remap.lua becouse neogit has status `not loaded` and config doesn't apply
+  --vim.keymap.set("n", "<leader>G", ":lua require('neogit').open()<CR>")
 
   require("neogit").setup {
     disable_signs = false,
