@@ -40,7 +40,7 @@ local function configure_exts()
 
   local dap, dapui = require "dap", require "dapui"
   dapui.setup {
-    expand_lines = true,
+    expand_lines = false,
     icons = { expanded = "", collapsed = "", circular = "" },
     mappings = {
       -- Use a table to apply multiple mappings
@@ -51,9 +51,30 @@ local function configure_exts()
       repl = "r",
       toggle = "t",
     },
+    layouts = {
+      {
+        elements = {
+          -- Elements can be strings or table with id and size keys.
+          { id = "scopes", size = 0.50 },
+          { id = "breakpoints", size = 0.25 },
+          --{ id = "stacks", size = 0.25 },
+          { id = "watches", size = 0.25 },
+        },
+        size = 40, -- 40 columns
+        position = "right",
+      },
+      {
+        elements = {
+          "repl",
+          --"console",
+        },
+        size = 0.25, -- 25% of total lines
+        position = "bottom",
+      },
+    },
     floating = {
       max_height = 0.9,
-      max_width = 0.5, -- Floats will be treated as percentage of your screen.
+      max_width = 0.9, -- Floats will be treated as percentage of your screen.
       border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
       mappings = {
         close = { "q", "<Esc>" },
@@ -74,7 +95,7 @@ end
 
 local function configure_debuggers()
   require("main.dap.go").setup()
-  -- require("main.dap.php").setup()
+  require("main.dap.php").setup()
 end
 
 function M.setup()
