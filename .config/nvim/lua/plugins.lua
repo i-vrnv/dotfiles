@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
 
   -- https://github.com/TimUntersberger/neogit
   use {
-    'TimUntersberger/neogit',
+    "TimUntersberger/neogit",
     cmd = 'Neogit',
     module = {'neogit'},
     config = function()
@@ -61,13 +61,17 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- https://github.com/nvim-neo-tree/neo-tree.nvim
   use {
-    'nvim-tree/nvim-tree.lua',
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
     config = function()
-      require('nvim-tree').setup()
+      require('main.neotree').setup()
     end,
   }
 
@@ -99,6 +103,14 @@ return require('packer').startup(function(use)
     "mbbill/undotree",
     config = function()
       require('main.undotree').setup()
+    end,
+  }
+
+  use {
+    'echasnovski/mini.comment',
+    branch = 'stable',
+    config = function()
+      require('main.comment').setup()
     end,
   }
 
@@ -151,14 +163,14 @@ return require('packer').startup(function(use)
   -- Golang
   use {
     'ray-x/go.nvim',
-    ft = {'go'},
     requires = {
       'ray-x/guihua.lua'
     },
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
     config = function()
       require('go').setup()
     end,
-    disable = true,
   }
 
   -- Java
