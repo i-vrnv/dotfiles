@@ -16,6 +16,9 @@ function M.setup()
   vim.keymap.set("n", "<Leader>dj", ":lua require('dap').step_into()<CR>")
   vim.keymap.set("n", "<F7>", ":lua require('dap').step_into()<CR>")
 
+  vim.keymap.set("n", "<Leader>dL", ":lua require('dap').step_over()<CR>")
+  vim.keymap.set("n", "<F8>", ":lua require('dap').run_to_cursor()<CR>")
+
   vim.keymap.set("n", "<Leader>dk", ":lua require('dap').step_out()<CR>")
   vim.keymap.set("n", "<Leader>dc", ":lua require('dap').close()<CR>")
   vim.keymap.set("n", "<Leader>dr", ":lua require('dap').repl.open()<CR>")
