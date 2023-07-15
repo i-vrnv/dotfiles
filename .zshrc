@@ -5,6 +5,7 @@ LOCALRC="~/.localrc"
 test -f $LOCALRC && source $LOCALRC
 
 export ZSH="$HOME/.oh-my-zsh"
+export EDITOR="nvim"
 
 ZSH_THEME="robbyrussell"
 
