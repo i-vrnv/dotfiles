@@ -21,7 +21,8 @@ function M.setup()
 
   vim.keymap.set("n", "<Leader>dk", ":lua require('dap').step_out()<CR>")
   vim.keymap.set("n", "<Leader>dc", ":lua require('dap').close()<CR>")
-  vim.keymap.set("n", "<Leader>dr", ":lua require('dap').repl.open()<CR>")
+  vim.keymap.set("n", "<Leader>dt", ":lua require('dap').terminate()<CR>")
+  vim.keymap.set("n", "<Leader>dr", ":lua require('dap.repl').toggle()<CR>")
   --vim.keymap.set("n", "<Leader>drl", ":lua require('dap').repl.run_last()<CR>")
 
   vim.keymap.set({'n', 'v'}, '<Leader>de', function() require('dapui').eval(nil, {enter=true}) end)
