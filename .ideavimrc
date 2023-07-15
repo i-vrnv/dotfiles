@@ -65,6 +65,12 @@ nnoremap <Leader>bD :action ChooseDebugConfiguration<CR>
 nnoremap <Leader>bc :action CreateRunConfiguration<CR>
 nnoremap <Leader>bC :action editRunConfigurations<CR>
 
+nnoremap <Leader>dd :action ChooseDebugConfiguration<CR>
+nnoremap <Leader>dt :action Stop<CR>
+
+nnoremap ]c :action NextDiff<CR>
+nnoremap [c :action PreviousDiff<CR>
+
 nnoremap <Leader>ee :action EvaluateExpression<CR>
 xnoremap <Leader>ee :action EvaluateExpression<CR>
 
@@ -96,16 +102,25 @@ vnoremap <Leader>ff :action GotoFile<CR>
 nnoremap <Leader>fm :action GotoSymbol<CR>
 nnoremap <Leader>fu :action FindUsages<CR>
 nnoremap <Leader>fl :action FindUsagesInFile<CR>
+nnoremap <Leader>fb :action Switcher<CR>
 
 " hierarchy
 nnoremap <Leader>hc :action CallHierarchy<CR>
 nnoremap <Leader>hm :action MethodHierarchy<CR>
 nnoremap <Leader>ht :action TypeHierarchy<CR>
 
+" hunk
+nnoremap ]h :action VcsShowNextChangeMarker<CR>
+nnoremap [h :action VcsShowPrevChangeMarker<CR>
+nnoremap <Leader>hr :action Vcs.RollbackChangedLines<CR>
+nnoremap <Leader>hs :action VcsShowCurrentChangeMarker<CR>
+
 " goto
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR> 
+nnoremap gD :action GotoTypeDeclaration<CR>
 nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gr :action ShowUsages<CR>
 nnoremap gt :action GotoTest<CR>
 
 nnoremap g0 :action GotoBookmark0<CR>
@@ -161,6 +176,7 @@ nnoremap <Leader>vnb :action Git.CreateNewBranch<CR>
 nnoremap <Leader>ps :action Switcher<CR>
 nnoremap <Leader>pv :NERDTreeFocus<CR>
 nnoremap <Leader>pf :NERDTreeFind<CR>
+nnoremap \ :NERDTreeFind<CR>
 nnoremap <Leader>pr :action RecentFiles<CR>
 
 nnoremap <Leader>w :action SurroundWith<CR>
