@@ -5,7 +5,11 @@ function M.setup()
   --vim.keymap.set("n", "<leader>G", ":lua require('neogit').open()<CR>")
 
   local neogit = require("neogit")
-  neogit.setup {}
+  neogit.setup {
+    integrations = {
+      diffview = true
+    },
+  }
 end
 
 return M

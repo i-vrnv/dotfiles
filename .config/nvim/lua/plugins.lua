@@ -46,6 +46,10 @@ return require('packer').startup(function(use)
     "TimUntersberger/neogit",
     cmd = 'Neogit',
     module = {'neogit'},
+    requires = {
+         'nvim-lua/plenary.nvim',
+         'sindrets/diffview.nvim'
+    },
     config = function()
       require('main.neogit').setup()
     end,
