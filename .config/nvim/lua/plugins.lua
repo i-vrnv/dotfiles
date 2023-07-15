@@ -119,6 +119,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'theprimeagen/harpoon',
+    config = function()
+      require('main.harpoon').setup()
+    end,
+  }
+  --use("github/copilot.vim")
+
+  use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     requires = {
