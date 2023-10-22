@@ -18,15 +18,21 @@ function M.setup()
 
   require('telescope').setup{
     defaults = {
-      sorting_strategy = "ascending",
       layout_config = {
         horizontal = {
           prompt_position = "top",
-          preview_width = 0.55,
-          results_width = 0.8,
         },
       },
-      path_display = { "smart" },
+      extensions = {
+        ["fzf"] = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the generic sorter
+          override_file_sorter = true,     -- override the file sorter
+          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+        },
+      },
+      sorting_strategy = "ascending",
+      --path_display = { "smart" },
       file_ignore_patterns = {
         ".git/",
         "target/",
@@ -79,26 +85,11 @@ function M.setup()
         "%.epub",
         "%.flac",
         "%.tar.gz",
-        -- PHP
-        "var/",
-        "vendor/",
       },
     },
-    extensions = {
---      ["fzf"] = {
---        fuzzy = true,                    -- false will only do exact matching
---        override_generic_sorter = true,  -- override the generic sorter
---        override_file_sorter = true,     -- override the file sorter
---        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-        -- the default case_mode is "smart_case"
---      },
-      ["ui-select"] = {
-        require("telescope.themes").get_dropdown {}
-      }
-    }
   }
 
-  require('telescope').load_extension('fzf')
+  --require('telescope').load_extension('fzf')
   require("telescope").load_extension("ui-select")
 
 end

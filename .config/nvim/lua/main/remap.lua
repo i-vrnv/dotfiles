@@ -1,7 +1,5 @@
 local default_opts =  {}
 
-vim.g.mapleader = " "
-
 vim.keymap.set("n", "<F1>", "<nop>")
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -31,9 +29,6 @@ vim.keymap.set("v", "p", '"_dP', default_opts)
 vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
 vim.keymap.set("n", "[b", ":bp<CR>", default_opts)
 vim.keymap.set("n", "<leader>x", ":bd<CR>", default_opts)
-
--- Cancel search highlighting with ESC
-vim.keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)

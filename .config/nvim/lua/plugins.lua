@@ -1,83 +1,109 @@
-return require('packer').startup(function(use)
-  use('wbthomason/packer.nvim')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
+
+local plugins = {
 
   -- https://github.com/nvim-lua/plenary.nvim 
-  use('nvim-lua/plenary.nvim')
+  {'nvim-lua/plenary.nvim'},
 
   -- https://github.com/nvim-treesitter/nvim-treesitter
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require("main.treesitter").setup()
     end,
-  }
+  },
 
   -- https://github.com/nvim-treesitter/nvim-treesitter-context
-  use {'nvim-treesitter/nvim-treesitter-context'}
+  {'nvim-treesitter/nvim-treesitter-context'},
 
   -- https://github.com/folke/tokyonight.nvim
-  use('folke/tokyonight.nvim')
-  use {'catppuccin/nvim', as = 'catppuccin'}
+  {'folke/tokyonight.nvim'},
+
+  -- https://github.com/catppuccin/nvim
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin'
+  },
+
+  -- https://github.com/rose-pine/neovim
+  {
+	  'rose-pine/neovim',
+	  name = 'rose-pine',
+    config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  },
 
   -- https://github.com/nvim-lualine/lualine.nvim
-  use {
+  {
     'nvim-lualine/lualine.nvim',
     event = 'VimEnter',
-    after = 'nvim-treesitter',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function()
       require('main.lualine').setup()
     end,
-  }
+  },
 
   -- https://github.com/akinsho/bufferline.nvim 
-  use {
+  {
     'akinsho/nvim-bufferline.lua',
     event = 'BufReadPre',
-    wants = 'nvim-web-devicons',
     config = function()
       require('main.bufferline').setup()
     end,
-  }
+  },
 
   -- https://github.com/TimUntersberger/neogit
-  use {
+  {
     "TimUntersberger/neogit",
     cmd = 'Neogit',
     module = {'neogit'},
-    requires = {
-         'nvim-lua/plenary.nvim',
-         'sindrets/diffview.nvim'
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
     },
     config = function()
       require('main.neogit').setup()
     end,
-  }
+  },
 
   -- https://github.com/tpope/vim-fugitive
-  use {
+  {
     "tpope/vim-fugitive",
     config = function()
       require('main.fugitive').setup()
     end,
-  }
+  },
 
   -- https://github.com/lewis6991/gitsigns.nvim
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    wants = 'plenary.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
+    dependencies = {'nvim-lua/plenary.nvim'},
     config = function()
       require('main.gitsigns').setup()
     end,
-  }
+  },
 
   -- https://github.com/nvim-neo-tree/neo-tree.nvim
-  use {
-  "nvim-neo-tree/neo-tree.nvim",
+  {
+    "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
@@ -85,59 +111,63 @@ return require('packer').startup(function(use)
     config = function()
       require('main.neotree').setup()
     end,
-  }
+  },
 
   -- https://github.com/nvim-telescope/telescope.nvim
-  use {
+  {
     'nvim-telescope/telescope.nvim',
     config = function()
       require('main.telescope').setup()
     end,
-    requires = {
-      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+    dependencies = {
+      {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
       {'nvim-telescope/telescope-ui-select.nvim'}
     }
-  }
+  },
 
-  use {'junegunn/fzf', run = './install --all' }
+  {
+    'junegunn/fzf',
+    build = './install --all',
+    enabled = true,
+  },
 
   -- https://github.com/windwp/nvim-autopairs
-  use {
+  {
     'windwp/nvim-autopairs',
-    wants = 'nvim-treesitter',
     module = {'nvim-autopairs.completion.cmp', 'nvim-autopairs'},
     config = function()
       require('main.autopairs').setup()
     end,
-  }
+  },
 
-  use {
+  -- https://github.com/mbbill/undotree
+  {
     "mbbill/undotree",
     config = function()
       require('main.undotree').setup()
     end,
-  }
+  },
 
-  use {
+  {
     'echasnovski/mini.comment',
     branch = 'stable',
     config = function()
       require('main.comment').setup()
     end,
-  }
+  },
 
-  use {
+  {
     'theprimeagen/harpoon',
     config = function()
       require('main.harpoon').setup()
     end,
-  }
-  --use("github/copilot.vim")
+  },
+  {"github/copilot.vim"},
 
-  use {
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
-    requires = {
+    dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
@@ -161,14 +191,14 @@ return require('packer').startup(function(use)
     config = function()
       require('main.lsp').setup()
     end,
-  }
+  },
 
   -- DAP
   -- https://github.com/mfussenegger/nvim-dap
-  use {
+  {
     'mfussenegger/nvim-dap',
     -- module = {'dap'},
-    requires = {
+    dependencies = {
       -- https://github.com/rcarriga/nvim-dap-ui
       {'rcarriga/nvim-dap-ui'},
       {'leoluz/nvim-dap-go'},
@@ -178,12 +208,12 @@ return require('packer').startup(function(use)
     config = function()
       require('main.dap').setup()
     end,
-  }
+  },
 
   -- Golang
-  use {
+  {
     'ray-x/go.nvim',
-    requires = {
+    dependencies = {
       'ray-x/guihua.lua'
     },
     event = {"CmdlineEnter"},
@@ -191,13 +221,23 @@ return require('packer').startup(function(use)
     config = function()
       require('go').setup()
     end,
-  }
+  },
 
   -- Java
   -- https://github.com/mfussenegger/nvim-jdtls
-  --use {
+  -- {
     --  'mfussenegger/nvim-jdtls',
     --  ft = 'java'
-    --}
+    -- }
+  }
 
-end)
+local opts = {
+  ui = {
+    border = "rounded",
+  }
+}
+
+require("lazy").setup(plugins, opts)
+
+
+

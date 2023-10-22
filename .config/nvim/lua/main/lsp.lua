@@ -9,6 +9,7 @@ function M.setup()
     'bashls',
     'gopls',
     'tsserver',
+    'rust_analyzer',
     'lua_ls',
   })
 
@@ -53,6 +54,12 @@ function M.setup()
   end)
 
   lsp.setup()
+
+  require('mason').setup({
+    ui = {
+      border = 'rounded'
+    }
+  })
 
   local cmp = require('cmp')
   local cmp_action = require('lsp-zero').cmp_action()
