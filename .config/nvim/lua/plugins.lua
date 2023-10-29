@@ -162,8 +162,25 @@ local plugins = {
       require('main.harpoon').setup()
     end,
   },
-  {"github/copilot.vim"},
 
+  -- copilot
+  --{'github/copilot.vim'},
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup({})
+    end,
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    config = function ()
+      require('copilot_cmp').setup()
+    end
+  },
+
+  -- lsp
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -220,6 +237,7 @@ local plugins = {
     ft = {"go", 'gomod'},
     config = function()
       require('go').setup()
+
     end,
   },
 

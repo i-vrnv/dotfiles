@@ -1,6 +1,12 @@
 local M = {}
 
 function M.setup()
+  require('mason').setup({
+    ui = {
+      border = 'rounded'
+    }
+  })
+
   local lsp = require("lsp-zero")
 
   lsp.preset("recommended")
@@ -55,35 +61,43 @@ function M.setup()
 
   lsp.setup()
 
-  require('mason').setup({
-    ui = {
-      border = 'rounded'
-    }
-  })
-
   local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
 
   -- autopairs
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
-  -- boreders
+  local cmp_select = {behavior = cmp.SelectBehavior.Select}
+  --local cmp_action = require('lsp-zero').cmp_action()
+  local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    })
+  })
+
+  cmp_mappings['<Tab>'] = nil
+  cmp_mappings['<S-Tab>'] = nil
+
   cmp.setup({
     completion = {
       completeopt = "menu,menuone,noselect,noinsert",
       keyword_length = 1,
     },
+    sources = {
+      {name = 'copilot'},
+      {name = 'nvim_lsp'},
+    },
+    mapping = cmp_mappings,
     preselect = cmp.PreselectMode.None,
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
-    mapping = {
-      ['<Tab>'] = cmp_action.luasnip_supertab(),
-      ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-      ['<C-Space>'] = cmp.mapping.complete(),
-    }
   })
 
   cmp.setup.cmdline({"/", "?"}, {
@@ -101,6 +115,7 @@ function M.setup()
       { name = "cmdline" },
     }),
   })
+
 
   -- inline diagnostic messages
   vim.diagnostic.config({
