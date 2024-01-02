@@ -162,11 +162,30 @@ local plugins = {
       require('main.harpoon').setup()
     end,
   },
-  {"github/copilot.vim"},
+
+  {
+    'nvimtools/none-ls.nvim',
+    config = function()
+      require('main.nonels').setup()
+    end,
+    enabled = true,
+  },
+
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('main.copilot').setup()
+    end,
+    dependencies = {
+      {'zbirenbaum/copilot-cmp'},
+    }
+  },
 
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
+    branch = 'v3.x',
     dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},

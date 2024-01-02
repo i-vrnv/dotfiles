@@ -3,8 +3,6 @@ local M = {}
 function M.setup()
 
   local default_opts = {}
-  vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", default_opts)
-  vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", default_opts)
   vim.keymap.set("n", "<leader><Tab>", ":BufferLinePick<CR>", default_opts)
 
   require("bufferline").setup {

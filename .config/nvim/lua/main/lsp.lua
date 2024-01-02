@@ -5,14 +5,6 @@ function M.setup()
 
   lsp.preset("recommended")
 
-  lsp.ensure_installed({
-    'bashls',
-    'gopls',
-    'tsserver',
-    'rust_analyzer',
-    'lua_ls',
-  })
-
   lsp.configure('lua_ls', {
     settings = {
       Lua = {
@@ -53,37 +45,40 @@ function M.setup()
     end
   end)
 
-  lsp.setup()
-
-  require('mason').setup({
-    ui = {
-      border = 'rounded'
-    }
-  })
 
   local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
 
   -- autopairs
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
-  -- boreders
+  local cmp_action = require('lsp-zero').cmp_action()
+  local cmp_select = { behavior = cmp.SelectBehavior.Select }
+  local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true })
+  })
+
   cmp.setup({
     completion = {
       completeopt = "menu,menuone,noselect,noinsert",
-      keyword_length = 1,
     },
+    sources = {
+      {name = 'copilot'},
+      {name = 'nvim_lsp'},
+      {name = 'luasnip'},
+    },
+    mapping = cmp_mappings,
     preselect = cmp.PreselectMode.None,
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
-    mapping = {
-      ['<Tab>'] = cmp_action.luasnip_supertab(),
-      ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-      ['<C-Space>'] = cmp.mapping.complete(),
-    }
   })
 
   cmp.setup.cmdline({"/", "?"}, {
@@ -106,6 +101,28 @@ function M.setup()
   vim.diagnostic.config({
     virtual_text = true,
   })
+
+  require('mason').setup({
+    ui = {
+      border = 'rounded'
+    }
+  })
+
+  require('mason-lspconfig').setup({
+    ensure_installed = {'bashls', 'gopls', 'tsserver', 'lua_ls'},
+    handlers = {
+      lsp.default_setup,
+      lua_ls = function()
+        local lua_opts = lsp.nvim_lua_ls()
+        require('lspconfig').lua_ls.setup(lua_opts)
+      end,
+    },
+  })
+
+  require('luasnip.loaders.from_vscode').lazy_load()
+
+  lsp.setup()
+
 end
 
 return M

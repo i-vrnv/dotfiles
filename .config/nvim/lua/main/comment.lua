@@ -8,7 +8,7 @@ function M.setup()
       comment = '<C-_>', -- it's actually <C-/>  
 
       -- Toggle comment on current line
-      comment_line = '',
+      --comment_line = '<C-_>',
 
       -- Define 'comment' textobject (like `dgc` - delete whole comment block)
       textobject = '<C-_>',
