@@ -71,7 +71,8 @@ function M.setup()
     sources = {
       {name = 'copilot'},
       {name = 'nvim_lsp'},
-      {name = 'luasnip'},
+      {name = 'luasnip', keyword_length = 2},
+      {name = 'buffer', keyword_length = 3},
     },
     mapping = cmp_mappings,
     preselect = cmp.PreselectMode.None,

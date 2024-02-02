@@ -35,10 +35,10 @@ vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", default_opts)
 
 -- Resizing panes
-vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
-vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", default_opts)
-vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
-vim.keymap.set("n", "<Down>", ":resize +1<CR>", default_opts)
+--vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
+--vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", default_opts)
+--vim.keymap.set("n", "<Up>", ":resize -1<CR>", default_opts)
+--vim.keymap.set("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
 vim.keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)

@@ -3,13 +3,16 @@ local M = {}
 function M.setup()
   local builtin = require('telescope.builtin')
 
-  vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
-  vim.keymap.set("n", "<Leader>fs", builtin.live_grep, {})
-  vim.keymap.set("n", "<Leader>fg", builtin.git_files, {})
   vim.keymap.set("n", "<Leader>/", function()
-    builtin.current_buffer_fuzzy_find({ fuzzy = false, case_mode = ignore_case })
+    builtin.current_buffer_fuzzy_find({ fuzzy = false, case_mode = 'ignore_case' })
   end, {})
 
+  vim.keymap.set("n", "<Leader>ff", function()
+    builtin.find_files({ hidden = true })
+  end, {})
+
+  vim.keymap.set("n", "<Leader>fs", builtin.live_grep, {})
+  vim.keymap.set("n", "<Leader>fg", builtin.git_files, {})
   vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
   vim.keymap.set('n', '<leader>ps', function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end)
 

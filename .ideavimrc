@@ -12,9 +12,6 @@ let mapleader ="\<Space>"
 
 map Q gq
 
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-
 nnoremap <Leader>/ :action Find<CR>
 vnoremap <Leader>/ :action Find<CR>
 
@@ -24,7 +21,11 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
 
+nnoremap <C-k> :action ParameterInfo<CR>
 inoremap <C-k> :action ParameterInfo<CR>
+
+nnoremap ]b gt
+nnoremap [b gT
 
 nnoremap ]q :action GotoNextElementUnderCaretUsage<CR>
 nnoremap [q :action GotoPrevElementUnderCaretUsage<CR>
