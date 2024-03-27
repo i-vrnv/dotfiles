@@ -5,6 +5,7 @@ function M.setup()
 
   lsp.preset("recommended")
 
+  -- fix vim global
   lsp.configure('lua_ls', {
     settings = {
       Lua = {
@@ -15,6 +16,7 @@ function M.setup()
       }
     }
   })
+
 
   -- keybindings
   lsp.on_attach(function(_, bufnr)
@@ -70,9 +72,8 @@ function M.setup()
     },
     sources = {
       {name = 'copilot'},
-      {name = 'nvim_lsp'},
-      {name = 'luasnip', keyword_length = 2},
-      {name = 'buffer', keyword_length = 3},
+      {name = 'nvim_lsp', keyword_length = 2, max_item_count = 5},
+      {name = 'luasnip', keyword_length = 2, max_item_count = 5},
     },
     mapping = cmp_mappings,
     preselect = cmp.PreselectMode.None,
@@ -110,7 +111,11 @@ function M.setup()
   })
 
   require('mason-lspconfig').setup({
-    ensure_installed = {'bashls', 'gopls', 'tsserver', 'lua_ls'},
+    ensure_installed = {
+      'bashls',
+      'gopls',
+      'lua_ls'
+    },
     handlers = {
       lsp.default_setup,
       lua_ls = function()
@@ -120,10 +125,27 @@ function M.setup()
     },
   })
 
+  require('lspconfig').gopls.setup({
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities,
+    cmd = { 'gopls', 'serve' },
+    filetypes = { 'go', 'gomod', 'gowork' },
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+          shadow = true,
+        },
+        staticcheck = true,
+      }
+    }
+  })
+
   require('luasnip.loaders.from_vscode').lazy_load()
 
   lsp.setup()
-
 end
 
 return M

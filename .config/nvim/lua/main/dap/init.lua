@@ -89,7 +89,7 @@ end
 
 local function configure_debuggers()
   require("main.dap.go").setup()
-  require("main.dap.php").setup()
+  --require("main.dap.php").setup()
 end
 
 function M.setup()

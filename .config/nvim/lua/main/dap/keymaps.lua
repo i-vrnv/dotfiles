@@ -8,18 +8,20 @@ function M.setup()
   vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>")
 
   vim.keymap.set("n", "<Leader>dd", ":lua require('dap').continue()<CR>")
-  vim.keymap.set("n", "<F5>", ":lua require('dap').continue()<CR>")
+  vim.keymap.set("n", "<F9>", ":lua require('dap').continue()<CR>")
 
   vim.keymap.set("n", "<Leader>dl", ":lua require('dap').step_over()<CR>")
-  vim.keymap.set("n", "<F6>", ":lua require('dap').step_over()<CR>")
+  vim.keymap.set("n", "<F8>", ":lua require('dap').step_over()<CR>")
 
   vim.keymap.set("n", "<Leader>dj", ":lua require('dap').step_into()<CR>")
   vim.keymap.set("n", "<F7>", ":lua require('dap').step_into()<CR>")
 
   vim.keymap.set("n", "<Leader>dL", ":lua require('dap').step_over()<CR>")
-  vim.keymap.set("n", "<F8>", ":lua require('dap').run_to_cursor()<CR>")
+  vim.keymap.set("n", "<S-F9>", ":lua require('dap').run_to_cursor()<CR>")
 
   vim.keymap.set("n", "<Leader>dk", ":lua require('dap').step_out()<CR>")
+  vim.keymap.set("n", "<S-F8>", ":lua require('dap').step_out()<CR>")
+
   vim.keymap.set("n", "<Leader>dc", ":lua require('dap').close()<CR>")
   vim.keymap.set("n", "<Leader>dt", ":lua require('dap').terminate()<CR>")
   vim.keymap.set("n", "<Leader>dr", ":lua require('dap.repl').toggle()<CR>")

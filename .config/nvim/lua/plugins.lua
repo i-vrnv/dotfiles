@@ -82,14 +82,6 @@ local plugins = {
     end,
   },
 
-  -- https://github.com/tpope/vim-fugitive
-  {
-    "tpope/vim-fugitive",
-    config = function()
-      require('main.fugitive').setup()
-    end,
-  },
-
   -- https://github.com/lewis6991/gitsigns.nvim
   {
     'lewis6991/gitsigns.nvim',
@@ -164,14 +156,6 @@ local plugins = {
   },
 
   {
-    'nvimtools/none-ls.nvim',
-    config = function()
-      require('main.nonels').setup()
-    end,
-    enabled = true,
-  },
-
-  {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
@@ -219,6 +203,7 @@ local plugins = {
     -- module = {'dap'},
     dependencies = {
       -- https://github.com/rcarriga/nvim-dap-ui
+      {"nvim-neotest/nvim-nio"},
       {'rcarriga/nvim-dap-ui'},
       {'leoluz/nvim-dap-go'},
       {'theHamsta/nvim-dap-virtual-text'},
@@ -238,17 +223,21 @@ local plugins = {
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
     config = function()
-      require('go').setup()
+      require('go').setup( {
+        -- lsp_codelens = false,
+      })
     end,
+    enabled = true
   },
 
   -- Java
   -- https://github.com/mfussenegger/nvim-jdtls
-  -- {
-    --  'mfussenegger/nvim-jdtls',
-    --  ft = 'java'
-    -- }
+  {
+    'mfussenegger/nvim-jdtls',
+    ft = 'java',
+    enabled = false
   }
+}
 
 local opts = {
   ui = {

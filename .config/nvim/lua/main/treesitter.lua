@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   require("nvim-treesitter.configs").setup {
-    ensure_installed = {"bash"," go", "java", "php", "phpdoc", "lua", "rust", "javascript", "typescript"},
+    ensure_installed = {"bash"," go", "gomod", "gowork", "gosum", "lua", "javascript", "typescript"},
     sync_install = false,
     auto_install = true,
     highlight = {
