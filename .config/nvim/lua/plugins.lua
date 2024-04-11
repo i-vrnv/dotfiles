@@ -164,7 +164,20 @@ local plugins = {
     end,
     dependencies = {
       {'zbirenbaum/copilot-cmp'},
-    }
+    },
+    enabled = true,
+  },
+
+  -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
+    opts = {
+      debug = false,
+    },
+    config = function()
+      require('main.copilot-chat').setup()
+    end,
   },
 
   {
