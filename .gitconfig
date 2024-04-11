@@ -15,5 +15,8 @@
 [diff]
     colorMoved = default
 
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/Projects/personal/.gitconfig
+
 [includeIf "gitdir:~/Projects/personal/"]
     path = ~/Projects/personal/.gitconfig
