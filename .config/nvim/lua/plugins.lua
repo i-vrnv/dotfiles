@@ -38,16 +38,13 @@ local plugins = {
   -- https://github.com/catppuccin/nvim
   {
     'catppuccin/nvim',
-    name = 'catppuccin'
+    name = 'catppuccin',
   },
 
   -- https://github.com/rose-pine/neovim
   {
 	  'rose-pine/neovim',
 	  name = 'rose-pine',
-    config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
   },
 
   -- https://github.com/nvim-lualine/lualine.nvim
