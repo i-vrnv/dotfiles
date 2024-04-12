@@ -15,11 +15,11 @@ function M.setup()
     },
     suggestion = {
       -- ghost text suggestion turn off for cmp
-      enabled = false,
+      enabled = true,
       auto_trigger = true,
       debounce = 75,
       keymap = {
-        accept = "<M-l>",
+        accept = "<Tab>",
         accept_word = false,
         accept_line = false,
         next = "<M-]>",
@@ -32,7 +32,7 @@ function M.setup()
       help = false,
     },
   })
-  require('copilot_cmp').setup()
+  -- require('copilot_cmp').setup()
 end
 
 return M

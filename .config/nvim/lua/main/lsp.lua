@@ -60,18 +60,21 @@ function M.setup()
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
-    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    -- ['<Tab>'] = cmp_action.luasnip_supertab(),
+    -- ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm({ select = true })
   })
+
+  cmp_mappings['<Tab>'] = nil
+  cmp_mappings['<S-Tab>'] = nil
 
   cmp.setup({
     completion = {
       completeopt = "menu,menuone,noselect,noinsert",
     },
     sources = {
-      {name = 'copilot'},
+      --{name = 'copilot'},
       {name = 'nvim_lsp', keyword_length = 2, max_item_count = 5},
       {name = 'luasnip', keyword_length = 2, max_item_count = 5},
     },
