@@ -48,4 +48,4 @@ vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", default_opts)
 
 -- Neogit temporary solution 
-vim.keymap.set("n", "<leader>G", ":lua require('neogit').open()<CR>")
+vim.keymap.set("n", "<leader>vs", ":lua require('neogit').open()<CR>")

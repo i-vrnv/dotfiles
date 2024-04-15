@@ -41,6 +41,7 @@ function M.setup()
 
   vim.keymap.set("n", "<Leader>vc", builtin.git_commits, {})
   vim.keymap.set("n", "<Leader>vb", builtin.git_branches, {})
+  vim.keymap.set("n", "<Leader>vh", builtin.git_bcommits, {})
 
   require('telescope').setup{
     defaults = {
