@@ -15,8 +15,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 source ~/.scripts/git
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 bindkey -s ^f '~/.scripts/tmux-sessionizer\n'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
+[ -x "$(command -v bat)" ] && alias cat="bat"
+
