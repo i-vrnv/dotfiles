@@ -173,6 +173,7 @@ nnoremap <Leader>vu :action Vcs.UpdateProject<CR>
 nnoremap <Leader>vp :action Vcs.Push<CR>
 nnoremap <Leader>vb :action Git.Branches<CR>
 nnoremap <Leader>vv :action ActivateVersionControlToolWindow<CR>
+nnoremap <Leader>vh :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <Leader>va :set relativenumber!<CR>:action Annotate<CR>
 nnoremap <Leader>vnb :action Git.CreateNewBranch<CR>
 
