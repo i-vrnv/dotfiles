@@ -80,12 +80,12 @@ local plugins = {
   },
 
   -- https://github.com/tpope/vim-fugitive
-  use {
+  {
     "tpope/vim-fugitive",
     config = function()
       require('main.fugitive').setup()
     end,
-  }
+  },
 
   -- https://github.com/lewis6991/gitsigns.nvim
   {
