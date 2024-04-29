@@ -41,21 +41,35 @@ function M.setup()
     }
   })
 
+  -- Toggle the chat window
+  vim.keymap.set("n", "<Leader>cct", function()
+        copilot_chat.toggle()
+  end, {})
+
+  -- Ask a question for the current buffer
   vim.keymap.set("n", "<Leader>ccq", function()
       local input = vim.fn.input("Quick Chat: ")
       if input ~= "" then
-        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+        copilot_chat.ask(input, { selection = require("CopilotChat.select").buffer })
+      end
+  end, {})
+
+  -- Ask a question for selection in the current buffer
+  vim.keymap.set("v", "<Leader>ccq", function()
+      local input = vim.fn.input("Quick Chat: ")
+      if input ~= "" then
+        copilot_chat.ask(input, { selection = require("CopilotChat.select").visual })
       end
   end, {})
 
   vim.keymap.set("n", "<Leader>cch", function()
       local actions = require("CopilotChat.actions")
-      require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+      copilot_chat.pick(actions.help_actions())
   end, {})
 
   vim.keymap.set("n", "<Leader>ccp", function()
       local actions = require("CopilotChat.actions")
-      require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+      copilot_chat.pick(actions.prompt_actions())
   end, {})
 
 end

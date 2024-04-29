@@ -1,10 +1,5 @@
 local default_opts =  {}
 
-vim.keymap.set("n", "<F1>", "<nop>")
-
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "q", "<nop>")
-
 vim.keymap.set("n", "<leader>s", "<cmd>SymbolsOutline<CR>")
 
 -- Center search results
@@ -26,10 +21,10 @@ vim.keymap.set("v", ">", ">gv", default_opts)
 vim.keymap.set("v", "p", '"_dP', default_opts)
 
 -- Switch buffer
-vim.keymap.set("n", "H", ":bn<CR>", default_opts)
-vim.keymap.set("n", "L", ":bp<CR>", default_opts)
-vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
+vim.keymap.set("n", "H", ":bp<CR>", default_opts)
+vim.keymap.set("n", "L", ":bn<CR>", default_opts)
 vim.keymap.set("n", "[b", ":bp<CR>", default_opts)
+vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
 vim.keymap.set("n", "<leader>x", ":bd<CR>", default_opts)
 
 -- Resizing panes
@@ -44,6 +39,3 @@ vim.keymap.set("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 -- Move selected line / block of text in visual mode
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", default_opts)
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", default_opts)
-
--- Neogit temporary solution 
-vim.keymap.set("n", "<leader>vs", ":lua require('neogit').open()<CR>")

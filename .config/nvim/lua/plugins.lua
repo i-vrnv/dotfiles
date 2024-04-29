@@ -81,7 +81,7 @@ local plugins = {
 
   -- https://github.com/tpope/vim-fugitive
   {
-    "tpope/vim-fugitive",
+    'tpope/vim-fugitive',
     config = function()
       require('main.fugitive').setup()
     end,
