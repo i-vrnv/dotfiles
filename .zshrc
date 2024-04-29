@@ -21,3 +21,10 @@ bindkey -s ^f '~/.scripts/tmux-sessionizer\n'
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
 [ -x "$(command -v bat)" ] && alias cat="bat"
 
+
+# The next line updates PATH for Yandex Cloud CLI.
+if [ -f '/Users/user/yandex-cloud/path.bash.inc' ]; then source '/Users/user/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/user/yandex-cloud/completion.zsh.inc' ]; then source '/Users/user/yandex-cloud/completion.zsh.inc'; fi
+
