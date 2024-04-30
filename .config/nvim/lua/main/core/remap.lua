@@ -1,5 +1,7 @@
 local default_opts =  {}
 
+vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>s", "<cmd>SymbolsOutline<CR>")
 
 -- Center search results
