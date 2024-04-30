@@ -1,7 +1,11 @@
 return {
-  'catppuccin/nvim',
-  name = 'catppuccin',
-  config = function()
-    vim.cmd([[colorscheme catppuccin]])
-  end,
+  {'folke/tokyonight.nvim'},
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose_pine',
+  }
 }
