@@ -2,6 +2,10 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
   branch = 'canary',
+  dependencies = {
+    { "zbirenbaum/copilot.lua" },
+    { "nvim-lua/plenary.nvim" },
+  },
   opts = {
     context = 'buffers',
     mappings = {
@@ -39,41 +43,51 @@ return {
       }
     }
   },
-  config = function()
-    local copilot_chat = require("CopilotChat")
-
-    -- Toggle the chat window
-    vim.keymap.set("n", "<Leader>cct", function()
-      copilot_chat.toggle()
-    end, {})
-
-    -- Ask a question for the current buffer
-    vim.keymap.set("n", "<Leader>ccq", function()
-      local input = vim.fn.input("Quick Chat: ")
-      if input ~= "" then
-        copilot_chat.ask(input, { selection = require("CopilotChat.select").buffer })
-      end
-    end, {})
-
-    -- Ask a question for selection in the current buffer
-    vim.keymap.set("v", "<Leader>ccq", function()
-      local input = vim.fn.input("Quick Chat: ")
-      if input ~= "" then
-        copilot_chat.ask(input, { selection = require("CopilotChat.select").visual })
-      end
-    end, {})
-
-    vim.keymap.set("n", "<Leader>cch", function()
-      local actions = require("CopilotChat.actions")
-      copilot_chat.pick(actions.help_actions())
-    end, {})
-
-    vim.keymap.set("n", "<Leader>ccp", function()
-      local actions = require("CopilotChat.actions")
-      copilot_chat.pick(actions.prompt_actions())
-    end, {})
-
-  end,
+  keys = {
+    {
+      '<leader>cct',
+      function()
+        require('CopilotChat').toggle()
+      end,
+      mode = { 'n', 'x' },
+    },
+    {
+      '<leader>ccq',
+      function()
+        local input = vim.fn.input("Quick Chat: ")
+        if input ~= "" then
+          require('CopilotChat').ask(input, { selection = require("CopilotChat.select").buffer })
+        end
+      end,
+      mode = { 'n' },
+    },
+    {
+      '<leader>ccq',
+      function()
+        local input = vim.fn.input("Quick Chat: ")
+        if input ~= "" then
+          require('CopilotChat').ask(input, { selection = require("CopilotChat.select").visual })
+        end
+      end,
+      mode = { 'v' },
+    },
+    {
+      '<leader>cch',
+      function()
+       local actions = require("CopilotChat.actions")
+       require('CopilotChat').pick(actions.help_actions())
+      end,
+      mode = { 'n', 'x' },
+    },
+    {
+      '<leader>ccp',
+      function()
+       local actions = require("CopilotChat.actions")
+       require('CopilotChat').pick(actions.prompt_actions())
+      end,
+      mode = { 'n', 'x' },
+    },
+  }
 }
 
 
