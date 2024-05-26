@@ -28,6 +28,7 @@ vim.keymap.set("n", "L", ":bn<CR>", default_opts)
 vim.keymap.set("n", "[b", ":bp<CR>", default_opts)
 vim.keymap.set("n", "]b", ":bn<CR>", default_opts)
 vim.keymap.set("n", "<leader>x", ":bd<CR>", default_opts)
+vim.keymap.set("n", "<leader>X", ":%bd|e#|bd#<CR>", default_opts)
 
 -- Resizing panes
 --vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", default_opts)
