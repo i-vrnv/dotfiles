@@ -149,6 +149,7 @@ return {
       },
     })
 
+    -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
     require('lspconfig').gopls.setup({
       on_attach = lsp.on_attach,
       capabilities = lsp.capabilities,
@@ -157,7 +158,6 @@ return {
       settings = {
         gopls = {
           completeUnimported = true,
-          usePlaceholders = true,
           analyses = {
             unusedparams = true,
             shadow = true,
