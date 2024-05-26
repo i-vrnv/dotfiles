@@ -20,3 +20,6 @@
 
 [includeIf "gitdir:~/Projects/personal/"]
     path = ~/Projects/personal/.gitconfig
+
+[includeIf "gitdir:~/Projects/tagroup/"]
+    path = ~/Projects/tagroup/.gitconfig
