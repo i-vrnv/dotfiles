@@ -30,8 +30,8 @@ return {
         },
       },
       filetypes = {
-        markdown = false,
-        help = false,
+        -- markdown = false,
+        -- help = false,
       },
     })
   end,
