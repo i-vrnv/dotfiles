@@ -29,6 +29,10 @@ return {
       builtin.live_grep({ hidden = true })
     end, {})
 
+    vim.keymap.set("n", "<Leader>fw", function()
+      builtin.grep_string()
+    end, {})
+
     vim.keymap.set("n", "<Leader>fg", builtin.git_files, {})
     vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
 
