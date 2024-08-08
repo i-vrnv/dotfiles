@@ -7,7 +7,7 @@ return {
   ft = {"go", 'gomod'},
   config = function()
     require('go').setup({
-      -- lsp_codelens = false,
+      lsp_codelens = false,
     })
   end,
   enabled = true
