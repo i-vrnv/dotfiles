@@ -179,13 +179,13 @@ return {
           },
           -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
           analyses = {
-            fieldalignment = true,
+            fieldalignment = false,
             nilness = true,
             unusedparams = true,
             unusedwrite = true,
             useany = true,
           },
-          usePlaceholders = true,
+          usePlaceholders = false,
           completeUnimported = true,
           staticcheck = true,
           directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
