@@ -16,14 +16,17 @@
 [diff]
     colorMoved = default
 
-[includeIf "gitdir:~/.dotfiles/"]
+[includeIf "gitdir:~/.dotfiles"]
     path = ~/Projects/personal/.gitconfig
 
-[includeIf "gitdir:~/Projects/personal/"]
+[includeIf "gitdir:~/Projects/personal"]
     path = ~/Projects/personal/.gitconfig
 
-[includeIf "gitdir:~/Projects/tagroup/"]
+[includeIf "gitdir:~/Projects/tagroup"]
     path = ~/Projects/tagroup/.gitconfig
 
-[includeIf "gitdir:~/Projects/"]
+[includeIf "gitdir:~/Projects"]
     path = ~/Projects/.gitconfig
+[user]
+	name = Ignatiy Voronov
+	email = ignatiy.voronov@gmail.com
