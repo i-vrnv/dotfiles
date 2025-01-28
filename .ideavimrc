@@ -1,3 +1,5 @@
+" Use :source ~/.ideavimrc to reload a config
+
 set scrolloff=5
 set incsearch
 set showmode
@@ -57,7 +59,8 @@ nnoremap <Leader>bP :action EditBreakpoint<CR>
 nnoremap <Leader>bp :action ToggleLineBreakpoint<CR>
 nnoremap <Leader>br :action ChooseRunConfiguration<CR>
 nnoremap <Leader>bd :action ChooseDebugConfiguration<CR>
-nnoremap <Leader>bx :action DebugClass<CR>
+nnoremap <Leader>bx :action RunClass<CR>
+nnoremap <Leader>bX :action DebugClass<CR>
 nnoremap <Leader>bt :action Stop<CR>
 
 "nnoremap <Leader>bB :action Compile<CR>
@@ -70,7 +73,7 @@ nnoremap <Leader>bt :action Stop<CR>
 "nnoremap <Leader>bD :action ChooseDebugConfiguration<CR>
 "nnoremap <Leader>bc :action CreateRunConfiguration<CR>
 "nnoremap <Leader>bC :action editRunConfigurations<CR>
-
+nnoremap <Leader>cc :action copilot.chat.show<CR>
 
 nnoremap ]c :action NextDiff<CR>
 nnoremap [c :action PreviousDiff<CR>
@@ -97,6 +100,7 @@ nnoremap <Leader>ip :action IntroduceParameter<CR>
 nnoremap <Leader>ic :action IntroduceConstant<CR>
 
 " find
+nnoremap <Leader>fa :action GotoAction<CR>
 nnoremap <Leader>fs :action FindInPath<CR>
 vnoremap <Leader>fs :action FindInPath<CR>
 nnoremap <Leader>fc :action GotoClass<CR>
