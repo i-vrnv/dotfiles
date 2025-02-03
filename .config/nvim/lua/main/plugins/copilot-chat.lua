@@ -1,7 +1,7 @@
 -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
-  branch = 'canary',
+  branch = 'main',
   dependencies = {
     { "zbirenbaum/copilot.lua" },
     { "nvim-lua/plenary.nvim" },
@@ -35,24 +35,24 @@ return {
       show_diff = {
         normal = 'gd'
       },
-      show_system_prompt = {
+      show_info = {
         normal = 'gp'
       },
-      show_user_selection = {
+      show_context = {
         normal = 'gs'
       }
     }
   },
   keys = {
     {
-      '<leader>cct',
+      '<leader>cc',
       function()
         require('CopilotChat').toggle()
       end,
       mode = { 'n', 'x' },
     },
     {
-      '<leader>ccq',
+      '<leader>cq',
       function()
         local input = vim.fn.input("Quick Chat: ")
         if input ~= "" then
@@ -62,7 +62,7 @@ return {
       mode = { 'n' },
     },
     {
-      '<leader>ccq',
+      '<leader>cq',
       function()
         local input = vim.fn.input("Quick Chat: ")
         if input ~= "" then
@@ -72,7 +72,7 @@ return {
       mode = { 'v' },
     },
     {
-      '<leader>cch',
+      '<leader>ch',
       function()
        local actions = require("CopilotChat.actions")
        require('CopilotChat').pick(actions.help_actions())
@@ -80,7 +80,7 @@ return {
       mode = { 'n', 'x' },
     },
     {
-      '<leader>ccp',
+      '<leader>ca',
       function()
        local actions = require("CopilotChat.actions")
        require('CopilotChat').pick(actions.prompt_actions())

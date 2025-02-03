@@ -30,3 +30,6 @@ if [ -f '/Users/user/yandex-cloud/path.bash.inc' ]; then source '/Users/user/yan
 # The next line enables shell command completion for yc.
 if [ -f '/Users/user/yandex-cloud/completion.zsh.inc' ]; then source '/Users/user/yandex-cloud/completion.zsh.inc'; fi
 
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"

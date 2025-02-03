@@ -4,6 +4,7 @@ return {
   dependencies = {
     {"nvim-neotest/nvim-nio"},
     {'rcarriga/nvim-dap-ui'},
+    -- require delve 'brew install delve' 
     {'leoluz/nvim-dap-go'},
     {'theHamsta/nvim-dap-virtual-text'},
     {'nvim-telescope/telescope-dap.nvim'},

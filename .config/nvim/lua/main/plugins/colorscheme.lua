@@ -7,5 +7,6 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose_pine',
-  }
+  },
+  { "ellisonleao/gruvbox.nvim"}
 }

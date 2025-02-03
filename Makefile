@@ -27,6 +27,12 @@ clean:
 	@echo "Cleaning up any symlinks managed by stow"
 	$(STOW) --delete $(STOW_FLAGS) .
 
+.PHONY: adopt
+clean:
+	@echo "Adopting and restore git"
+	$(STOW) --adopt $(STOW_FLAGS) .
+	git restore .
+
 .PHONY: help
 help:
 	@echo "Usage:"

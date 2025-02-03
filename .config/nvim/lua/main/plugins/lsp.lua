@@ -136,7 +136,7 @@ return {
 
     require('mason-lspconfig').setup({
       ensure_installed = {
-        'bashls',
+        -- 'bashls',
         'gopls',
         'lua_ls'
       },
@@ -169,13 +169,13 @@ return {
             vendor = true,
           },
           hints = {
-            assignVariableTypes = true,
+            assignVariableTypes = false,
             compositeLiteralFields = true,
             compositeLiteralTypes = true,
             constantValues = true,
             functionTypeParameters = true,
             parameterNames = true,
-            rangeVariableTypes = true,
+            rangeVariableTypes = false,
           },
           -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
           analyses = {
