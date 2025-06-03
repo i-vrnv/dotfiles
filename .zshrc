@@ -33,3 +33,18 @@ if [ -f '/Users/user/yandex-cloud/completion.zsh.inc' ]; then source '/Users/use
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/usr/local/opt/openvpn/sbin/openvpn:$PATH"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/user/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

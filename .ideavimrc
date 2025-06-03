@@ -45,6 +45,8 @@ nnoremap L gt
 xnoremap J :action MoveLineDown<CR>
 xnoremap K :action MoveLineUp<CR>
 
+nnoremap <C-w>x :action HideAllWindows<CR>
+
 xnoremap <Leader>y "+y
 
 nnoremap <Leader>a :action ShowIntentionActions<CR>
@@ -73,7 +75,10 @@ nnoremap <Leader>bt :action Stop<CR>
 "nnoremap <Leader>bD :action ChooseDebugConfiguration<CR>
 "nnoremap <Leader>bc :action CreateRunConfiguration<CR>
 "nnoremap <Leader>bC :action editRunConfigurations<CR>
+
 nnoremap <Leader>cc :action copilot.chat.show<CR>
+nnoremap <Leader>ci :action copilot.chat.inline<CR>
+vnoremap <Leader>ci :action copilot.chat.inline<CR>
 
 nnoremap ]c :action NextDiff<CR>
 nnoremap [c :action PreviousDiff<CR>
@@ -133,10 +138,15 @@ nnoremap gt :action GotoTest<CR>
 
 nnoremap g0 :action GotoBookmark0<CR>
 nnoremap g1 :action GotoBookmark1<CR>
+noremap <A-a> :action GotoBookmark1<CR>
 nnoremap g2 :action GotoBookmark2<CR>
+noremap <A-s> :action GotoBookmark2<CR>
 nnoremap g3 :action GotoBookmark3<CR>
+noremap <A-d> :action GotoBookmark3<CR>
 nnoremap g4 :action GotoBookmark4<CR>
+noremap <A-f> :action GotoBookmark4<CR>
 nnoremap g5 :action GotoBookmark5<CR>
+noremap <A-g> :action GotoBookmark5<CR>
 nnoremap g6 :action GotoBookmark6<CR>
 nnoremap g7 :action GotoBookmark7<CR>
 nnoremap g8 :action GotoBookmark8<CR>
@@ -188,6 +198,9 @@ nnoremap <Leader>pv :NERDTreeFocus<CR>
 nnoremap <Leader>pf :NERDTreeFind<CR>
 nnoremap \ :NERDTreeFind<CR>
 nnoremap <Leader>pr :action RecentFiles<CR>
+
+nnoremap <Leader>u :action LocalHistory.ShowHistory<CR>
+vnoremap <Leader>u :action LocalHistory.ShowSelectionHistory<CR>
 
 nnoremap <Leader>w :action SurroundWith<CR>
 vnoremap <Leader>w :action SurroundWith<CR>
