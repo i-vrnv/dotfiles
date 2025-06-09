@@ -8,7 +8,7 @@ return {
     -- add any opts here
     -- for example
     provider = "copilot",
-    vendors = {
+    providers = {
       ["copilot-claude-3.7"] = {
         __inherited_from = "copilot",
         model = "claude-3.7-sonnet",
@@ -16,8 +16,10 @@ return {
       ["copilot-claude-3.7-thought"] = {
         __inherited_from = "copilot",
         model = "claude-3.7-sonnet-thought",
-        temperature = 1,
-        max_tokens = 20000,
+        extra_request_body = {
+          temperature = 1,
+          max_tokens = 20000,
+        }
       },
       ["claude-opus"] = {
         hide_in_model_selector = true,
