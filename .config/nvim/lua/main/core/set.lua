@@ -25,6 +25,8 @@ vim.opt.updatetime = 50
 vim.opt.scrolloff = 8
 
 vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
+vim.opt.spell = false
 
-
+-- This setting will bring borders for all windows in Neovim.
+-- Currently, it is commented out because it add borders to all windows, and borders duplicating. 
+-- vim.o.winborder = "rounded"
