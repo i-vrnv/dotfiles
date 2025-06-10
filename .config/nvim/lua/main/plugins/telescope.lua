@@ -63,6 +63,7 @@ return {
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
           },
         },
+        path_display = { "smart" },
         sorting_strategy = "ascending",
         --path_display = { "smart" },
         file_ignore_patterns = {
