@@ -14,8 +14,8 @@ let mapleader ="\<Space>"
 
 map Q gq
 
-nnoremap <Leader>/ :action Find<CR>
-vnoremap <Leader>/ :action Find<CR>
+"nnoremap <Leader>/ :action Find<CR>
+"vnoremap <Leader>/ :action Find<CR>
 
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
@@ -191,6 +191,8 @@ nnoremap <Leader>vh :action Vcs.ShowTabbedFileHistory<CR>
 vnoremap <Leader>vh :action Vcs.ShowHistoryForBlock<CR>
 nnoremap <Leader>va :set relativenumber!<CR>:action Annotate<CR>
 nnoremap <Leader>vnb :action Git.CreateNewBranch<CR>
+
+nnoremap <Leader>u :action LocalHistory.ShowHistory<CR>
 
 " project
 nnoremap <Leader>ps :action Switcher<CR>
