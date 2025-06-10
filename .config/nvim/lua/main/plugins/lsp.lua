@@ -12,10 +12,10 @@ return {
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-path'},
     {'hrsh7th/cmp-cmdline'},
-    {'ray-x/cmp-treesitter'},
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-nvim-lua'},
     {'hrsh7th/cmp-nvim-lsp-signature-help'},
+    {'ray-x/cmp-treesitter'},
     {'saadparwaiz1/cmp_luasnip'},
 
     -- Snippets
@@ -47,7 +47,7 @@ return {
       vim.keymap.set("n", "gD", function() vim.lsp.buf.type_definition() end, opts)
       vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
       vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, opts)
       vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
       vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
       vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
