@@ -1,3 +1,6 @@
+abbr cat 'bat --paging=always --style=plain --color=always'
+abbr l 'ls -la'
+
 abbr dbl 'docker build'
 abbr dcin 'docker container inspect'
 abbr dcls 'docker container ls'
