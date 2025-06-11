@@ -82,6 +82,14 @@ abbr gco 'git checkout'
 abbr gd 'git diff'
 abbr gst 'git status'
 
+abbr glo 'git log --oneline --decorate'
+abbr glog 'git log --oneline --decorate --graph'
+abbr gloga 'git log --oneline --decorate --graph --all'
+
+abbr glola "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all"
+abbr glols "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat"
+abbr glol "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
+
 function git_main_branch
     command git rev-parse --git-dir &>/dev/null; or return
     for ref in refs/heads/{main,trunk,mainline,default,stable,master} refs/remotes/{origin,upstream}/{main,trunk,mainline,default,stable,master}
