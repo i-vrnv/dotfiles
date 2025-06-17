@@ -27,6 +27,12 @@ return {
       }
     },
     windows = {
+      ask = {
+        border = "rounded",
+      },
+      edit = {
+        border = "rounded",
+      },
       width = 50,
     },
   },
