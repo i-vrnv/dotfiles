@@ -1,0 +1,162 @@
+[
+  // Side bar
+  {
+    "key": "ctrl+h",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusSideBar",
+        "workbench.action.closePanel",
+        "workbench.action.closeAuxiliaryBar",
+      ]
+    },
+  },
+  {
+    "key": "ctrl+h",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeSidebar",
+        "workbench.action.focusLastEditorGroup"
+      ]
+    },
+    "when": "sideBarFocus"
+  },
+
+    // Bottom bar
+  {
+    "key": "ctrl+j",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusPanel",
+        "workbench.action.closeSidebar",
+        "workbench.action.closeAuxiliaryBar",
+      ]
+    },
+  },
+  {
+    "key": "ctrl+j",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closePanel",
+        "workbench.action.focusLastEditorGroup",
+      ]
+    },
+    "when": "panelFocus"
+  },
+  
+  // AI bar
+  {
+    "key": "ctrl+l",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusAuxiliaryBar",
+        "workbench.action.closePanel",
+        "workbench.action.closeSidebar",
+      ]
+    },
+  },
+  {
+    "key": "ctrl+l",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+       "workbench.action.closeAuxiliaryBar",
+       "workbench.action.focusLastEditorGroup",
+      ]
+    },
+    "when": "auxiliaryBarFocus"
+  },
+
+  // Close all side panels
+  {
+    "key": "ctrl+k",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closeSidebar",
+        "workbench.action.closePanel",
+        "workbench.action.closeAuxiliaryBar"
+      ]
+    }
+  },
+
+  // Terminal
+  {
+    "key": "ctrl+]",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+
+  // FILE TREE
+  {
+    "key": "enter",
+    "command": "runCommands",
+    "when": "explorerViewletFocus && filesExplorerFocus && !inputFocus",
+    "args": {
+      "commands": [
+        "list.select",
+        "workbench.action.closeSidebar"
+      ]
+    }
+  },
+  {
+    "command": "workbench.files.action.showActiveFileInExplorer",
+    "key": "\\",
+    "when": "editorTextFocus"
+  },
+  {
+    "command": "runCommands",
+    "key": "\\",
+    "args": {
+      "commands": [
+        "workbench.action.focusLastEditorGroup",
+        "workbench.action.closeSidebar"
+      ]
+    },
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  // EXTRA
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.toggleZenMode"
+  }
+]
