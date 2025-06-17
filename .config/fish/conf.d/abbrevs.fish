@@ -107,10 +107,6 @@ function gcm
     git checkout (git_main_branch)
 end
 
-function ggpush
-    git push origin (git rev-parse --abbrev-ref HEAD)
-end
+abbr ggpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
+abbr ggpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
 
-function ggpull
-    git pull origin (git rev-parse --abbrev-ref HEAD)
-end

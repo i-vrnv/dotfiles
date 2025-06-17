@@ -5,3 +5,6 @@ end
 set fish_greeting
 
 zoxide init fish | source
+
+# uv
+fish_add_path "/Users/ignatii.voronov/.local/bin"
