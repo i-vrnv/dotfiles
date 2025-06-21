@@ -127,6 +127,11 @@ return {
       virtual_text = true,
     })
 
+    -- install java
+    require('java').setup()
+
+    local lsp_zero = require('lsp-zero')
+
     require('mason').setup({
       ui = {
         border = 'rounded'
@@ -137,7 +142,8 @@ return {
       ensure_installed = {
         -- 'bashls',
         'gopls',
-        'lua_ls'
+        'lua_ls',
+        'jdtls',
       },
       handlers = {
         lsp.default_setup,
@@ -145,8 +151,11 @@ return {
           local lua_opts = lsp.nvim_lua_ls()
           require('lspconfig').lua_ls.setup(lua_opts)
         end,
+        jdtls = lsp_zero.noop,
       },
     })
+
+    require('lspconfig').jdtls.setup({})
 
     -- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
     require('lspconfig').gopls.setup({
