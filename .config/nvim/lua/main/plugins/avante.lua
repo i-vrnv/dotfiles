@@ -1,30 +1,30 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  enabled = true,
+  enabled = false,
   lazy = false,
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     provider = "copilot",
     providers = {
-      ["copilot-claude-3.7"] = {
-        __inherited_from = "copilot",
-        model = "claude-3.7-sonnet",
-      },
-      ["copilot-claude-3.7-thought"] = {
-        __inherited_from = "copilot",
-        model = "claude-3.7-sonnet-thought",
-        extra_request_body = {
-          temperature = 1,
-          max_tokens = 20000,
-        }
-      },
-      ["claude-opus"] = {
-        hide_in_model_selector = true,
-      },
-      ["openai-gpt-4o-mini"] = {
-        hide_in_model_selector = true,
-      }
+    --   ["copilot-claude-3.7"] = {
+    --     __inherited_from = "copilot",
+    --     model = "claude-3.7-sonnet",
+    --   },
+    --   ["copilot-claude-3.7-thought"] = {
+    --     __inherited_from = "copilot",
+    --     model = "claude-3.7-sonnet-thought",
+    --     extra_request_body = {
+    --       temperature = 1,
+    --       max_tokens = 20000,
+    --     }
+    --   },
+    --   ["claude-opus"] = {
+    --     hide_in_model_selector = true,
+    --   },
+    --   ["openai-gpt-4o-mini"] = {
+    --     hide_in_model_selector = true,
+    --   }
     },
     windows = {
       ask = {

@@ -1,1 +1,4 @@
-return {'nvim-java/nvim-java'}
+return {
+  enabled = true,
+  'nvim-java/nvim-java'
+}
