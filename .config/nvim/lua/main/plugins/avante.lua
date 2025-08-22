@@ -7,24 +7,6 @@ return {
   opts = {
     provider = "copilot",
     providers = {
-    --   ["copilot-claude-3.7"] = {
-    --     __inherited_from = "copilot",
-    --     model = "claude-3.7-sonnet",
-    --   },
-    --   ["copilot-claude-3.7-thought"] = {
-    --     __inherited_from = "copilot",
-    --     model = "claude-3.7-sonnet-thought",
-    --     extra_request_body = {
-    --       temperature = 1,
-    --       max_tokens = 20000,
-    --     }
-    --   },
-    --   ["claude-opus"] = {
-    --     hide_in_model_selector = true,
-    --   },
-    --   ["openai-gpt-4o-mini"] = {
-    --     hide_in_model_selector = true,
-    --   }
     },
     windows = {
       ask = {
