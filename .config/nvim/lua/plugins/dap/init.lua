@@ -98,8 +98,7 @@ return {
     end
 
     local function configure_debuggers()
-      require("main.plugins.dap.go").setup()
-      --require("main.dap.php").setup()
+      require("plugins.dap.go").setup()
     end
 
     configure()
@@ -107,7 +106,7 @@ return {
     configure_debuggers()
 
     require('dap.ext.vscode').load_launchjs(nil, nil)
-    require("main.plugins.dap.keymaps").setup() -- Keymaps
+    require("plugins.dap.keymaps").setup() -- Keymaps
 
   end,
 }

@@ -1,5 +1,5 @@
---vim.g.loaded_netrw = 1
---vim.g.loaded_netrwPlugin = 1
-
---require("plugins")
-require("main")
+require("config.options")
+require("config.keymaps")
+require("core.lazy")
+require("core.lsp")
+require("config.commands")
