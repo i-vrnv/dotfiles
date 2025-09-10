@@ -7,4 +7,5 @@ set fish_greeting
 zoxide init fish | source
 
 # uv
-fish_add_path "/Users/ignatii.voronov/.local/bin"
+fish_add_path "$HOME/.local/bin"
+
