@@ -31,7 +31,7 @@ return {
 				useany = true,
 				unreachable = true,
 				modernize = true,
-				stylecheck = true,
+				stylecheck = false,
 				appends = true,
 				asmdecl = true,
 				assign = true,

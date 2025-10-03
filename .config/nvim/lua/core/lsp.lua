@@ -24,6 +24,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>lf", vim.lsp.buf.format, "Format")
     map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 
+    local opts = {}
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "gD", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
@@ -45,7 +46,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "gr", telescope.lsp_references, opts)
       vim.keymap.set("n", "gI", telescope.lsp_incoming_calls, opts)
       vim.keymap.set("n", "gO", telescope.lsp_outgoing_calls, opts)
-      vim.keymap.set("n", "<leader>s", telescope.lsp_document_symbols, opts)
+
+      local symbols_style = {
+        symbols = {"Function", "Method", "Class", "Interface"},
+        symbol_width = 50,
+      }
+      vim.keymap.set("n", "<leader>s", function() telescope.lsp_document_symbols(symbols_style) end, opts)
     end
 
     local function client_supports_method(client, method, bufnr)
@@ -86,9 +92,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 })
 
+-- borders for all hovers
+local _hover = vim.lsp.buf.hover
+vim.lsp.buf.hover = function(opts)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  return _hover(opts)
+end
+
 vim.diagnostic.config({
-  virtual_lines = true,
-  -- virtual_text = true,
+  -- virtual_lines = true,
+  virtual_text = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
