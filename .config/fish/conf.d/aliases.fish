@@ -1,6 +1,9 @@
 alias cat='bat --paging=always --style=plain --color=always'
 alias l='ls -la'
 
+alias gemini-flash='GOOGLE_CLOUD_PROJECT="metro-markets-gemini-cli" GOOGLE_CLOUD_LOCATION="europe-west1" GEMINI_MODEL="gemini-2.5-flash" gemini'
+alias gemini-pro='GOOGLE_CLOUD_PROJECT="metro-markets-gemini-cli" GOOGLE_CLOUD_LOCATION="europe-west1" GEMINI_MODEL="gemini-2.5-pro" gemini'
+
 alias dbl='docker build'
 alias dcin='docker container inspect'
 alias dcls='docker container ls'
@@ -110,4 +113,11 @@ function gcm
     git checkout (git_main_branch)
 end
 
+function gcof
+    set branch (git branch --all | sed 's/^[* ] //' | fzf)
+    if test -n "$branch"
+        git checkout (string replace -r 'remotes/origin/' '' $branch)
+    end
+end
+ 
 
