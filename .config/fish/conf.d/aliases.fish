@@ -119,5 +119,16 @@ function gcof
         git checkout (string replace -r 'remotes/origin/' '' $branch)
     end
 end
- 
+  
 
+function gri
+    set commit (git log --oneline | fzf | awk '{print $1}')
+    if test -n "$commit"
+        set parent (git rev-parse $commit^ 2>/dev/null)
+        if test $status -eq 0
+            git rebase -i $parent
+        else
+            echo "Selected commit has no parent, cannot rebase interactively."
+        end
+    end
+end
