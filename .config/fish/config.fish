@@ -9,3 +9,5 @@ zoxide init fish | source
 # uv
 fish_add_path "$HOME/.local/bin"
 
+
+alias claude="/Users/user/.claude/local/claude"
