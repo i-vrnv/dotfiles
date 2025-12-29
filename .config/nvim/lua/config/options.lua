@@ -26,6 +26,7 @@ vim.opt.scrolloff = 8
 
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = false
+vim.o.splitright = true
 
 -- This setting will bring borders for all windows in Neovim.
 -- Currently, it is commented out because it add borders to all windows, and borders duplicating. 

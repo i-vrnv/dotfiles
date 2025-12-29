@@ -3,6 +3,7 @@ vim.lsp.enable({
   "lua_ls",
   "pyright",
   "intelephense",
+  "ts"
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -22,9 +23,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>la", vim.lsp.buf.code_action, "Code Action")
     map("<leader>lr", vim.lsp.buf.rename, "Rename all references")
     map("<leader>lf", vim.lsp.buf.format, "Format")
-    map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 
     local opts = {}
+    vim.keymap.set("n", "gv", function()
+      vim.cmd('vsplit')
+      vim.lsp.buf.definition()
+    end, opts)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "gD", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
