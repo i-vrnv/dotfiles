@@ -2,6 +2,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VimEnter',
+  enabled = true,
   config = function()
     require('lualine').setup {
       options = {

@@ -3,7 +3,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    enabled = true,
+    enabled = false,
     config = function()
       require("catppuccin").setup({
         auto_integrations = true,
@@ -16,5 +16,16 @@ return {
     'rose-pine/neovim',
     name = 'rose_pine',
   },
-  { "ellisonleao/gruvbox.nvim"}
+  {
+    "ellisonleao/gruvbox.nvim"
+  },
+  {
+  "p00f/alabaster.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.opt.termguicolors = true
+    vim.cmd.colorscheme("alabaster")
+  end,
+}
 }
