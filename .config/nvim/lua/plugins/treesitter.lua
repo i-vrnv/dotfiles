@@ -15,7 +15,7 @@ return {
       },
     }
   end,
-  depndencies = {
+  dependencies = {
     {'nvim-treesitter/nvim-treesitter-context'},
   }
 }

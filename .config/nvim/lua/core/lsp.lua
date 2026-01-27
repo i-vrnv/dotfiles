@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gD", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
@@ -83,14 +83,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 })
 
--- borders for all hovers
-local _hover = vim.lsp.buf.hover
-vim.lsp.buf.hover = function(opts)
-  opts = opts or {}
-  opts.border = 'rounded'
-  return _hover(opts)
-end
-
 vim.diagnostic.config({
   virtual_lines = false,
   virtual_text = true,
@@ -98,7 +90,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = 'rounded',
     source = true,
   },
 })

@@ -19,4 +19,4 @@ vim.opt.spelllang = 'en_us'
 vim.opt.spell = false
 
 vim.o.splitright = true
-vim.o.winborder = 'single'
+vim.o.winborder = 'rounded'
