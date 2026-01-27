@@ -2,6 +2,7 @@ return {
   { "L3MON4D3/LuaSnip", keys = {} },
   {
     "saghen/blink.cmp",
+    enabled = true,
     dependencies = {
       "rafamadriz/friendly-snippets",
     },

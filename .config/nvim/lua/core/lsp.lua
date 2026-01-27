@@ -9,21 +9,8 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc)
-      vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-    end
-
     -- defaults:
     -- https://neovim.io/doc/user/news-0.11.html#_defaults
-
-    map("gf", vim.diagnostic.open_float, "Open Diagnostic Float")
-    map("K", vim.lsp.buf.hover, "Hover Documentation")
-    map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
-    map("gD", vim.lsp.buf.declaration, "Goto Declaration")
-    map("<leader>la", vim.lsp.buf.code_action, "Code Action")
-    map("<leader>lr", vim.lsp.buf.rename, "Rename all references")
-    map("<leader>lf", vim.lsp.buf.format, "Format")
-
     local opts = {}
     vim.keymap.set("n", "gv", function()
       vim.cmd('vsplit')
@@ -33,7 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gD", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
@@ -100,18 +87,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local _hover = vim.lsp.buf.hover
 vim.lsp.buf.hover = function(opts)
   opts = opts or {}
-  opts.border = opts.border or 'rounded'
+  opts.border = 'rounded'
   return _hover(opts)
 end
 
 vim.diagnostic.config({
-  -- virtual_lines = true,
+  virtual_lines = false,
   virtual_text = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = "rounded",
+    border = 'rounded',
     source = true,
   },
 })
