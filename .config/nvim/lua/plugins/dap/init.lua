@@ -105,7 +105,6 @@ return {
     configure_exts()
     configure_debuggers()
 
-    require('dap.ext.vscode').load_launchjs(nil, nil)
     require("plugins.dap.keymaps").setup() -- Keymaps
 
   end,
