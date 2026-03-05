@@ -16,6 +16,7 @@
       "space w v": "pane::SplitRight",
       "space w s": "pane::SplitDown",
       "space w q": "pane::CloseActiveItem",
+      "space w o": "workspace::CloseAllDocks",
       //"space w h": "workspace::ActivatePaneLeft", // Redundant but muscle memory friendly
       //"space w l": "workspace::ActivatePaneRight",
       // "space w k": "workspace::ActivatePaneUp",
@@ -49,6 +50,7 @@
       "space h p": "editor::ToggleSelectedDiffHunks",
       "space h r": "git::Restore",
       "space v a": "git::Blame",
+      "space v s": "git_panel::ToggleFocus",
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
 
@@ -122,11 +124,21 @@
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
       "p": "project_panel::Paste",
+      "q": "workspace::CloseActiveDock",
       // Navigation out of the panel
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  // ------------------------------------------------------------------
+  // GIT PANEL
+  // ------------------------------------------------------------------
+  {
+    "context": "GitPanel && not_editing",
+    "bindings": {
+      "q": "git_panel::Close",
     },
   },
 ]
